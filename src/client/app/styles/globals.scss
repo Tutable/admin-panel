@@ -1,0 +1,51 @@
+
+// importing the default font for application
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+// $theme_color_1: #3e84c0;
+$theme_color_1: #e32128;
+$theme_color_2: #31a2d6;
+$theme_color_3: #2cabdd;
+$theme_color_4: #2ab2e1;
+
+$theme_color: rgb(170,237,181);
+$theme_background: linear-gradient(90deg, rgba(170,237,181,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1) 100%);
+
+// global transition factor
+$global_transition: all .25s ease-in-out;
+$global_margin: 0px;
+$global_padding: 0px;
+$global_header_gradient: linear-gradient(90deg, rgba(170,237,181,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1) 100%);
+$global_box_shadow: 0px 0px 10px 1px silver;
+$global_font: 'Montserrat';
+$heading_font: 'Montserrat';
+
+$global_component_margin: 20px;
+$global_border_radius: 5px;
+$global_container_padding: 10px;
+$global_black_color: #383838;
+$global_white_color: #fff;
+
+.litnite-btn {
+	background: $theme_background;
+	border: none;
+	padding: $global_container_padding;
+	padding-left: $global_container_padding*4;
+	padding-right: $global_container_padding*4;
+	border-radius: 3px;
+	color: $global_white_color;
+	cursor: pointer;
+	margin-top: 3px;
+	outline: none;
+}
+.app-btn:active {
+	outline: none;
+}
+
+.bg-dark {
+	background: $global_black_color;
+}
+
+.line-break {
+	background: $theme_color;
+}
