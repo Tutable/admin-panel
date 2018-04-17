@@ -16,11 +16,12 @@
 	 fetching: reducers.fetchReducer,
 	 login: reducers.loginReducer,
 	 // admin reducers
-	 adminDoctorsListing: reducers.adminDoctorsListingReducer,
-	 adminConsultationsListing: reducers.adminConsultationsListingReducer,
+	 students: reducers.studentsReducer,
+	//  adminDoctorsListing: reducers.adminDoctorsListingReducer,
+	//  adminConsultationsListing: reducers.adminConsultationsListingReducer,
 	 dashboard: reducers.adminDashboard,
-	 anxiometer: reducers.anxiometerReducer,
-	 feedback: reducers.feedbacksReducer,
-	 ailments: reducers.ailmentsReducer,
+	//  anxiometer: reducers.anxiometerReducer,
+	//  feedback: reducers.feedbacksReducer,
+	//  ailments: reducers.ailmentsReducer,
 	 navigation: reducers.navigationReducer,
  }), initialState, enhancer );

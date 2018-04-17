@@ -12,7 +12,7 @@ $theme_color: rgb(170,237,181);
 $theme_background: linear-gradient(90deg, rgba(170,237,181,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1) 100%);
 
 // global transition factor
-$global_transition: all .25s ease-in-out;
+$global_transition: all .20s ease-in-out;
 $global_margin: 0px;
 $global_padding: 0px;
 $global_header_gradient: linear-gradient(90deg, rgba(170,237,181,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1) 100%);
@@ -50,6 +50,27 @@ $global_white_color: #fff;
 	outline: none;
 }
 
+.app-btn {
+	background: $theme_background;
+	border: none;
+	padding: $global_container_padding;
+	padding-left: $global_container_padding*4;
+	padding-right: $global_container_padding*4;
+	border-radius: 3px;
+	color: $global_white_color;
+	cursor: pointer;
+	margin-top: 3px;
+	outline: none;
+	box-shadow: none;
+	outline: none;
+}
+.app-btn:focus{
+	outline: none;
+}
+.app-btn:hover {
+	box-shadow: 3px 3px 10px 1px silver;
+}
+
 .bg-dark {
 	background: $global_black_color;
 }
@@ -59,4 +80,19 @@ $global_white_color: #fff;
 }
 .active-menu {
 	color: $theme_color_4;
+}
+.application-table {
+	zoom: 0.9
+}
+.plain {
+	background: $theme_color;
+}
+.verify {
+	background: #508fce;
+}
+.recover {
+	background: #d4b922;
+}
+.delete {
+	background: #c13731;
 }
