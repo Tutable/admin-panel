@@ -37,6 +37,14 @@ $global_white_color: #fff;
 	cursor: pointer;
 	margin-top: 3px;
 	outline: none;
+	// box-shadow: 2px 2px 10px 1px silver;
+	outline: none;
+}
+.litnite-btn:focus{
+	outline: none;
+}
+.litnite-btn:hover {
+	box-shadow: 3px 3px 10px 1px silver;
 }
 .app-btn:active {
 	outline: none;
