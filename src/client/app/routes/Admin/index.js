@@ -14,11 +14,13 @@ import {
 import { connect } from 'react-redux';
 import { adminLogin } from '../../redux/actions';
 import { toast, ToastContainer } from 'react-toastify';
+import FontAwesome from 'react-fontawesome';
 
 import HeaderComponent from '../../components/Header';
 import LoadingOverlay from '../../components/LoadingOverlay';
 
-//loading assets
+// loading assets
+import Logo from '../../assets/images/tutable.png';
 import './index.scss';
 
 class AdminComponent extends Component {
@@ -95,6 +97,7 @@ class AdminComponent extends Component {
 					<Col md={4} sm={3} xs={2}></Col>
 					<Col md={4} sm={6} xs={8}>
 						<section className='admin-login' id='admin-login'>
+							<p></p>
 							<Form>
 								<FormGroup>
 									<Label for="username">Username</Label>
@@ -105,7 +108,7 @@ class AdminComponent extends Component {
 									<input ref={adminPass => this.adminPass = adminPass} type='password' className='custom-field' placeholder='Password for admin'/>
 								</FormGroup>
 								<p className='text-center'>
-									<button className="litnite-btn" onClick={this.onLogin}>LOGIN</button>
+									<button className="litnite-btn" onClick={this.onLogin}>LOGIN&nbsp;&nbsp;&nbsp;<FontAwesome name="chevron-right"/></button>
 								</p>
 							</Form>
 							<br/><br/><br/>

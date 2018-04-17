@@ -1,7 +1,9 @@
+@import '../../styles/globals';
+
 .account-header {
-	background: #23241f;
+	background: $theme_background;
 	padding: 10px;
-	color: #fff;
+	color: #383838;
 
 	span {
 		position: absolute;

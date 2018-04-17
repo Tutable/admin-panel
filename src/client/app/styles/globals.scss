@@ -6,7 +6,7 @@
 $theme_color_1: #e32128;
 $theme_color_2: #31a2d6;
 $theme_color_3: #2cabdd;
-$theme_color_4: #2ab2e1;
+$theme_color_4: #40a68c;
 
 $theme_color: rgb(170,237,181);
 $theme_background: linear-gradient(90deg, rgba(170,237,181,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1) 100%);
@@ -56,4 +56,7 @@ $global_white_color: #fff;
 
 .line-break {
 	background: $theme_color;
+}
+.active-menu {
+	color: $theme_color_4;
 }

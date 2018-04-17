@@ -10,7 +10,6 @@ import Favicon from 'react-favicon';
 // load assets
 import './index.scss';
 import Logo from '../../assets/images/tutable.png';
-import PreRIcon from '../../assets/images/PreR-icon.png'
 
 export default class AccountHeader extends Component {
 
@@ -29,7 +28,7 @@ export default class AccountHeader extends Component {
 	}
 	render() {
 		return <section className='account-header'>
-			<Favicon url={PreRIcon}/>
+			<Favicon url={Logo}/>
 			<img src={Logo} height={30}/>
 			<span><a href onClick={this.handleLogout}>Logout</a></span>
 		</section>;
