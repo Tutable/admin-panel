@@ -16,7 +16,7 @@ export { adminLogin } from './loginActions';
 // 	updateDoctor,
 // } from './adminDoctorsActions';
 // export { fetchConsultations, deleteConsultations } from './adminConsultationsActions';
-export { fetchStatistics } from './adminDashboardActions';
+// export { fetchStatistics } from './adminDashboardActions';
 export { fetchStudents } from './studentActions';
 // export {
 // 	fetchAilmentsList,
