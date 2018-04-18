@@ -11,7 +11,13 @@ export {
 	verifyEntity,
 	deleteEntity,
 } from './studentActions';
-export { fetchTeachers } from './teacherActions';
+export {
+	fetchTeachers,
+	updateTeacher,
+	deleteTeacherEntity,
+	toggleEditingTeacher,
+	verifyTeacherEntity,
+} from './teacherActions';
 export { fetchClasses } from './classesActions';
 export { fetchBookings } from './bookingsActions';
 export { fetchTransactions } from './transactionActions';

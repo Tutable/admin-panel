@@ -20,6 +20,11 @@ import Image from '../../components/Image';
 import {
 	fetchTeachers,
 	switchNavigation,
+	verifyEntity,
+	deleteTeacherEntity,
+	updateTeacher,
+	toggleEditingTeacher,
+	verifyTeacherEntity,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -74,7 +79,19 @@ class TeachersListing extends Component {
 	}
 
 	render() {
-		const { fetching, teachers: { teachersData } } = this.props;
+		const {
+			fetching,
+			teachers: {
+				teachersData,
+				editingTeacher,
+				page,
+				limit,
+			},
+			triggerToggleEditingTeacher,
+			triggerUpdateTeacher,
+			triggerDeleteTeacherEntity,
+			triggerVerifyTeacherEntity
+		} = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
@@ -103,7 +120,14 @@ class TeachersListing extends Component {
 										{index+1}
 									</td>
 									<td><Image image={imageUrl}/></td>
-									<td>{teacher.name}</td>
+									<td>
+										{/* {teacher.name} */}
+										{
+											editingTeacher === teacher._id ?
+												<input type='text' className='input-field' ref={ name => this.name = name } placeholder={teacher.name}/> :
+												teacher.name
+										}
+									</td>
 									<td>
 									{
 										teacher.facebook ? 
@@ -112,25 +136,46 @@ class TeachersListing extends Component {
 												<FontAwesome style={{ color: '#e8453c'}} name="google"/> :
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
-									<td>{teacher.email}</td>
+									<td>
+										{
+											editingTeacher === teacher._id ?
+												<input type='email' className='input-field' ref={ email => this.email = email } placeholder={teacher.email}/> :
+												teacher.email
+										}
+									</td>
 									{/* <td>{teacher.address.location}</td> */}
 									<td>
 										{
 											teacher.isVerified ?
 												'Verified':
-												<button className='btn-sm app-btn verify'>Verify</button>
+												<button className='btn-sm app-btn verify' onClick={() => triggerVerifyTeacherEntity(teacher.email, page, limit)}>Verify</button>
 										}
 										{/* {teacher.isVerified ? 'Yes': 'No'} */}
 									</td>
 									<td>
-										<button className={ teacher.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
+										<button onClick={() => triggerDeleteTeacherEntity(teacher.email, teacher.deleted ? false : true, page, limit)} className={ teacher.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
 											{ teacher.deleted ? 'Recover': 'Delete' }		
 										</button>
 									</td>
 									<td>
-										<button className='btn btn-sm'>
-											Edit
-										</button>
+										{
+											editingTeacher && editingTeacher === teacher._id ?
+												<p>
+													<button className='btn btn-sm app-btn green' onClick={() => {
+															const name = this.name.value || undefined;
+															const email = this.email.value || undefined;
+															triggerUpdateTeacher({ id: teacher._id, name, email: teacher.email, updateEmail: email, limit, page });
+															// alert(this.name.value);
+															// alert(this.email.value);
+														}}>
+														Update
+													</button>&nbsp;
+													<button className='btn btn-sm app-btn recover' onClick={() => triggerToggleEditingTeacher(teacher._id)}>Cancel</button>
+												</p> :
+												<button className='btn btn-sm btn-default' onClick={() => triggerToggleEditingTeacher(teacher._id, true)}>
+													Edit
+												</button>
+										}
 									</td>
 								</tr>
 							}) :
@@ -157,6 +202,10 @@ const mapDispatchToProps = dispatch => {
 	return {
 		triggerFetchTeachers: (page, limit) => dispatch(fetchTeachers({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
+		triggerToggleEditingTeacher: (id, toggle) => dispatch(toggleEditingTeacher({ id, toggle })),
+		triggerVerifyTeacherEntity: (email, page, limit) => dispatch(verifyTeacherEntity({ userEmail: email, page, limit })),
+		triggerDeleteTeacherEntity: (email, deleted, page, limit) => dispatch(deleteTeacherEntity({ userEmail: email, deleted, page, limit })),
+		triggerUpdateTeacher: ({ id, name, email, updateEmail, page, limit }) => dispatch(updateTeacher({ id, name, email, updateEmail, limit, page })),
 	};
 }
 

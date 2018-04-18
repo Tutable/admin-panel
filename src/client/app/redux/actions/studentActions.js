@@ -104,10 +104,7 @@ export const updateStudent = ({ id, name, email, updateEmail, page = 1, limit = 
 	dispatch(fetchAction({ fetching: true }));
 
 	const body = { userId: id, name, userEmail: email, updateEmail };
-	// console.log(body);
-	const formData = new FormData();
-	// todo can add picture property if required
-	formData.append('data', JSON.stringify({ id, name, userEmail: email, updateEmail }));
+	
 	axios.post(APPLICATION_ROUTES.UPDATE_ENTITY, body, { headers })
 		.then(response => {
 			const { data: { code } } = response;

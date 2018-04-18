@@ -138,7 +138,7 @@ class StudentsListing extends Component {
 									<td>
 										{
 											editingStudent === student._id ?
-												<input type='text' className='input-field' ref={ email => this.email = email } placeholder={student.email}/> :
+												<input type='email' className='input-field' ref={ email => this.email = email } placeholder={student.email}/> :
 												student.email
 										}
 									</td>
