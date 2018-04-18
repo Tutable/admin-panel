@@ -83,7 +83,7 @@ class ClassesListing extends Component {
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Name</th>
+						<th>Class</th>
 						<th>Category</th>
 						<th>Teacher</th>
 						<th>Difficulty</th>
@@ -104,7 +104,8 @@ class ClassesListing extends Component {
 									<td>
 										<p style={{ position: 'absolute' }}><Image image={imageUrl}/></p>
 										<p style={{ marginLeft: '60px', top: '0'}}>
-											{singleClass.teacher.name}<br/>{singleClass.teacher.id}
+											{singleClass.teacher.name}<br/>{singleClass.teacher.id}<br/>
+											<a href={`mailto:${singleClass.teacher.email}?Subject=Query%20regarding%20${singleClass.name} class`} target="_top">Send Query Mail</a>
 										</p>
 									</td>
 									<td>

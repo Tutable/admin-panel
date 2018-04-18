@@ -21,4 +21,5 @@
 	 classes: reducers.classesReducer,
 	 dashboard: reducers.adminDashboard,
 	 navigation: reducers.navigationReducer,
+	 bookings: reducers.bookingsReducer,
  }), initialState, enhancer );
