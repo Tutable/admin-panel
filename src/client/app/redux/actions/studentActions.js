@@ -44,10 +44,10 @@ export const fetchStudents = ({ page = 1, limit = 30 }) => (dispatch) => {
  * 
  * @todo handle http failures
  */
-export const deleteStudent = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
+export const deleteEntity = ({ userEmail, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
-	const body = { id, deleted };
-	axios.post(APPLICATION_ROUTES.DELETE_DOCTOR, body, { headers })
+	const body = { userEmail, deleted };
+	axios.post(APPLICATION_ROUTES.DELETE_ENTITY, body, { headers })
 		.then((response) => {
 			const { data: { code, message } } = response;
 			if (code === 100) {

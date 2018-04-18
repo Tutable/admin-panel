@@ -13,6 +13,7 @@ export const APPLICATION_ROUTES = {
 	// update the student and teacher entity
 	UPDATE_ENTITY:				`${SERVER_BASE_URL}admin/update`,
 	VERIFY_ENTITY:				`${SERVER_BASE_URL}admin/verify`,
+	DELETE_ENTITY:				`${SERVER_BASE_URL}admin/delete`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,
 	// DOCTOR_PICTURE:				`${SERVER_BASE_URL}doctors/picture/`,

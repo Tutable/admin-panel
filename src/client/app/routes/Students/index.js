@@ -23,6 +23,7 @@ import {
 	toggleEditingStudent,
 	updateStudent,
 	verifyEntity,
+	deleteEntity,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -88,6 +89,7 @@ class StudentsListing extends Component {
 			triggerToggleEditingStudent,
 			triggerUpdateStudent,
 			triggerVerifyEntity,
+			triggerDeleteEntity,
 		} = this.props;
 
 		return <section>
@@ -150,7 +152,7 @@ class StudentsListing extends Component {
 										{/* {student.isVerified ? 'Yes': 'No'} */}
 									</td>
 									<td>
-										<button className={ student.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
+										<button onClick={() => triggerDeleteEntity(student.email, student.deleted ? false : true, page, limit)} className={ student.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
 											{ student.deleted ? 'Recover': 'Delete' }		
 										</button>
 									</td>
@@ -202,6 +204,7 @@ const mapDispatchToProps = dispatch => {
 		triggerToggleEditingStudent: (id, toggle) => dispatch(toggleEditingStudent({ id, toggle })),
 		triggerUpdateStudent: ({ id, name, email, updateEmail, limit, page }) => dispatch(updateStudent({ id, name, email, updateEmail, limit, page })),
 		triggerVerifyEntity: (email, page, limit) => dispatch(verifyEntity({ userEmail: email, page, limit })),
+		triggerDeleteEntity: (email, deleted, page, limit) => dispatch(deleteEntity({ userEmail: email, deleted, page, limit })),
 	};
 }
 

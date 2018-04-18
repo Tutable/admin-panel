@@ -9,6 +9,7 @@ export {
 	toggleEditingStudent,
 	updateStudent,
 	verifyEntity,
+	deleteEntity,
 } from './studentActions';
 export { fetchTeachers } from './teacherActions';
 export { fetchClasses } from './classesActions';
