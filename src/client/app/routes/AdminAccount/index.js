@@ -82,9 +82,9 @@ class AdminIndex extends Component {
 								<ListGroupItem name='transactions' className={ active === navigationIndexer.transactions ? 'active-menu' : '' } tag="a" href="#" onClick={this.handleSwitch}>
 									<FontAwesome name="money"/> Transactions
 								</ListGroupItem>
-								<ListGroupItem name='categories' className={ active === navigationIndexer.categories ? 'active-menu' : '' } tag="a" href="#" onClick={this.handleSwitch}>
+								{/* <ListGroupItem name='categories' className={ active === navigationIndexer.categories ? 'active-menu' : '' } tag="a" href="#" onClick={this.handleSwitch}>
 									<FontAwesome name="list"/> Categories
-								</ListGroupItem>
+								</ListGroupItem> */}
 							</ListGroup>
 						</Col>
 						<Col md={10} sm={10} xs={12}>

@@ -89,13 +89,6 @@ class TransactionsListing extends Component {
 						<th>Amount (AUD)</th>
 						<th>Status</th>
 						<th>Payout due</th>
-						{/* <th>Name</th>
-						<th>Linked account</th>
-						<th>Email</th>
-						{/* <th>address</th> */}
-						{/* <th>Verification</th>
-						<th>Delete</th>
-						<th>Actions</th> */}
 					</tr>
 				</thead>
 				<tbody>

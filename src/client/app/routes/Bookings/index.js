@@ -106,7 +106,7 @@ class BookingsListing extends Component {
 										<p style={{ marginLeft: '60px', top: '0'}}>
 											<FontAwesome name="user-plus"/>&nbsp;
 											{booking.teacher.name}<br/>{booking.teacher.id}<br/>
-											<a href={`mailto:${booking.teacher.email}?Subject=Query%20regarding%20booking #${booking._id}`} target="_top">Send Query Mail</a>
+											<a href={`mailto:${booking.teacher.email}?Subject=Query%20regarding%20booking #${booking._id}`} target="_top">Send Query Mail to Teacher</a>
 											<hr/>
 											<FontAwesome name="book"/>&nbsp;
 											{booking.classDetails.name}<br/>
@@ -119,7 +119,7 @@ class BookingsListing extends Component {
 										<p style={{ marginLeft: '60px', top: '0'}}>
 										<FontAwesome name="user"/>&nbsp;
 											{booking.student.name}<br/>{booking.student.id}<br/>
-											<a href={`mailto:${booking.student.email}?Subject=Query%20regarding%20booking #${booking._id}`} target="_top">Send Query Mail</a>
+											<a href={`mailto:${booking.student.email}?Subject=Query%20regarding%20booking #${booking._id}`} target="_top">Send Query Mail to Student</a>
 										</p>
 									</td>
 									<td>{ moment(booking.timestamp).format('LLL') }</td>
