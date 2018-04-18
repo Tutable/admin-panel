@@ -21,6 +21,7 @@ export const EDITING_TEACHER='EDITING_TEACHER';
 // actions related to classes
 export const CLASSES_PAYLOAD='CLASSES_PAYLOAD';
 export const EDITING_CLASS='EDITING_CLASS';
+export const CATEGORIES_PAYLOAD='CATEGORIES_PAYLOAD';
 
 // actions related to bookings
 export const BOOKINGS_PAYLOAD='BOOKINGS_PAYLOAD';

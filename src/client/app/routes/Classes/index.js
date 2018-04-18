@@ -8,7 +8,11 @@ import {
 	Button,
 	Pagination,
 	PaginationItem,
-	PaginationLink
+	PaginationLink,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
 } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 import { toast, ToastContainer } from 'react-toastify';
@@ -20,6 +24,7 @@ import Image from '../../components/Image';
 import {
 	switchNavigation,
 	fetchClasses,
+	toggleEditingClass,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -74,7 +79,17 @@ class ClassesListing extends Component {
 	}
 
 	render() {
-		const { fetching, classes: { classesData } } = this.props;
+		const {
+			fetching,
+			classes: {
+				classesData,
+				editingClass,
+				page,
+				limit,
+				categories,
+			},
+			triggerToggleEditingClass,
+		} = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
@@ -99,8 +114,38 @@ class ClassesListing extends Component {
 								const imageUrl = singleClass.teacher.picture ? singleClass.teacher.picture.indexOf('http') !== -1 ? singleClass.teacher.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${singleClass.teacher.picture}`: undefined;
 								return <tr key={`class-${index}`}>
 									<td>{index+1}</td>
-									<td>{singleClass.name}</td>
-									<td>{singleClass.category.title}</td>
+									<td>
+										{/* {singleClass.name} */}
+										{
+											editingClass === singleClass.id ?
+												<input type='text' className='input-field' ref={ name => this.name = name } placeholder={singleClass.name}/> :
+												singleClass.name
+										}
+									</td>
+									<td>
+										{/* {singleClass.category.title} */}
+										{
+											editingClass === singleClass.id ? 
+												<Dropdown size="sm" isOpen={true} toggle={() => {}}>
+													<DropdownToggle caret>
+														{singleClass.category.title}
+													</DropdownToggle>
+													<DropdownMenu>
+														{
+															categories && categories.map((category, index) =>
+																<DropdownItem>{ category.title }</DropdownItem>
+															)
+														}
+														{/* <DropdownItem header>Header</DropdownItem>
+														<DropdownItem disabled>Action</DropdownItem>
+														<DropdownItem>Another Action</DropdownItem>
+														<DropdownItem divider/>
+														<DropdownItem>Another Action</DropdownItem> */}
+													</DropdownMenu>
+												</Dropdown> :
+												singleClass.category.title
+										}
+									</td>
 									<td>
 										<p style={{ position: 'absolute' }}><Image image={imageUrl}/></p>
 										<p style={{ marginLeft: '60px', top: '0'}}>
@@ -110,17 +155,64 @@ class ClassesListing extends Component {
 									</td>
 									<td>
 										{
-											singleClass.level === 1 ? 'Beginner' :
-												singleClass.level === 2 ? 'Inetrmediate':
-													singleClass.level === 3 ? 'Advanced' : ''
+											editingClass && editingClass === singleClass.id ?
+												<p>
+													<Dropdown size="sm" isOpen={true} toggle={() => {}}>
+														<DropdownToggle caret>
+															{singleClass.level === 1 ? 'Beginner' :
+																singleClass.level === 2 ? 'Inetrmediate':
+																	singleClass.level === 3 ? 'Advanced' : ''}
+														</DropdownToggle>
+														<DropdownMenu>
+															<DropdownItem>Beginner</DropdownItem>
+															<DropdownItem>Inetermediate</DropdownItem>
+															<DropdownItem>Advanced</DropdownItem>
+															{/* <DropdownItem header>Header</DropdownItem>
+															<DropdownItem disabled>Action</DropdownItem>
+															<DropdownItem>Another Action</DropdownItem>
+															<DropdownItem divider/>
+															<DropdownItem>Another Action</DropdownItem> */}
+														</DropdownMenu>
+													</Dropdown>
+												</p> :
+												singleClass.level === 1 ? 'Beginner' :
+													singleClass.level === 2 ? 'Inetrmediate':
+														singleClass.level === 3 ? 'Advanced' : ''
 										}
 									</td>
-									<td>{singleClass.rate}</td>
+									<td>
+										{/* {singleClass.rate} */}
+										{
+											editingClass && editingClass === singleClass.id ?
+												<input type='number' className='input-field' ref={ rate => this.rate = rate } placeholder={singleClass.rate}/> :
+												singleClass.rate
+										}
+									</td>
 									<td>{moment(singleClass.created).format('LLL')}</td>
 									<td>
 										<button className={ singleClass.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
 											{ singleClass.deleted ? 'Recover': 'Delete' }		
 										</button>
+									</td>
+									<td>
+										{
+											editingClass && editingClass === singleClass.id ?
+												<p>
+													<button className='btn btn-sm app-btn green' onClick={() => {
+															const name = this.name.value || undefined;
+															const email = this.email.value || undefined;
+															// triggerUpdateTeacher({ id: teacher._id, name, email: teacher.email, updateEmail: email, limit, page });
+															// alert(this.name.value);
+															// alert(this.email.value);
+														}}>
+														Update
+													</button>&nbsp;
+													<button className='btn btn-sm app-btn recover' onClick={() => triggerToggleEditingClass(singleClass.id)}>Cancel</button>
+												</p> :
+												<button className='btn btn-sm btn-default' onClick={() => triggerToggleEditingClass(singleClass.id, true)}>
+													Edit
+												</button>
+										}
 									</td>
 								</tr>
 							}) :
@@ -147,6 +239,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		triggerFetchClasses: (page, limit) => dispatch(fetchClasses({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
+		triggerToggleEditingClass: (id, toggle) => dispatch(toggleEditingClass({ id, toggle })),
 	};
 }
 

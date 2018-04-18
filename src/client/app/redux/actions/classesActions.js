@@ -5,6 +5,7 @@ import axios from 'axios';
 import {
 	CLASSES_PAYLOAD,
 	EDITING_CLASS,
+	CATEGORIES_PAYLOAD
 } from './actionTypes';
 import { fetchAction } from '.';
 import { APPLICATION_ROUTES } from '../../constants';
@@ -27,6 +28,18 @@ export const fetchClasses = ({ page = 1, limit = 30 }) => (dispatch) => {
 			if (code === 100) {
 				// handle listing here
 				dispatch({ type: CLASSES_PAYLOAD, paginatedClasses: data, page, limit, length });
+				// now fetch categories listing
+				axios.post(APPLICATION_ROUTES.CATEGORIES_LISTING, { parent: true })
+					.then((catResponse) => {
+						const { data: { code, message, data } } = catResponse;
+						if (code === 100) {
+							dispatch({ type: CATEGORIES_PAYLOAD, categories: data });
+						}
+					}).catch((catError) => {
+						/**
+						 * @todo handle category fetch error
+						 */
+					});
 			} else {
 				// handle error here
 			}
@@ -67,8 +80,8 @@ export const deleteClass = ({ id, deleted = true, page = 1, limit = 30 }) => (di
  * @param {*} id 
  * @param {*} toggle true/false
  */
-export const toggleEditingClass = (id, toggle) => (dispatch) => {
-	dispatch({ type: EDITING_CLASSES, editingClass: toggle ? id : undefined });
+export const toggleEditingClass = ({ id, toggle }) => (dispatch) => {
+	dispatch({ type: EDITING_CLASS, editingClass: toggle ? id : undefined });
 };
 
 /**
