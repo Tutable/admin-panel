@@ -20,6 +20,7 @@ import Image from '../../components/Image';
 import {
 	switchNavigation,
 	fetchStudents,
+	toggleEditingStudent,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -74,7 +75,7 @@ class StudentsListing extends Component {
 	}
 
 	render() {
-		const { fetching, students: { studentsData } } = this.props;
+		const { fetching, students: { studentsData, editingStudent}, triggerToggleEditingStudent } = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
@@ -103,7 +104,13 @@ class StudentsListing extends Component {
 										{index+1}
 									</td>
 									<td><Image image={imageUrl}/></td>
-									<td>{student.name}</td>
+									<td>
+										{
+											editingStudent === student._id ?
+												<input type='text' className='input-field' placeholder={student.name}/> :
+												student.name
+										}
+									</td>
 									<td>
 									{
 										student.facebook ? 
@@ -112,7 +119,13 @@ class StudentsListing extends Component {
 												<FontAwesome style={{ color: '#e8453c'}} name="google"/> :
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
-									<td>{student.email}</td>
+									<td>
+										{
+											editingStudent === student._id ?
+												<input type='text' className='input-field' placeholder={student.email}/> :
+												student.email
+										}
+									</td>
 									<td>{student.address.location}</td>
 									<td>
 										{
@@ -128,9 +141,16 @@ class StudentsListing extends Component {
 										</button>
 									</td>
 									<td>
-										<button className='btn btn-sm'>
-											Edit
-										</button>
+										{
+											editingStudent && editingStudent === student._id ?
+												<p>
+													<button className='btn btn-sm app-btn green'>Update</button>&nbsp;
+													<button className='btn btn-sm app-btn recover' onClick={() => triggerToggleEditingStudent(student._id)}>Cancel</button>
+												</p> :
+												<button className='btn btn-sm btn-default' onClick={() => triggerToggleEditingStudent(student._id, true)}>
+													Edit
+												</button>
+										}
 									</td>
 								</tr>
 							}) :
@@ -157,6 +177,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		triggerFetchStudents: (page, limit) => dispatch(fetchStudents({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
+		triggerToggleEditingStudent: (id, toggle) => dispatch(toggleEditingStudent({ id, toggle })),
 	};
 }
 

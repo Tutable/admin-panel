@@ -4,7 +4,10 @@ export { adminLogin } from './loginActions';
 /**
  * admin actions
  */
-export { fetchStudents } from './studentActions';
+export {
+	fetchStudents,
+	toggleEditingStudent
+} from './studentActions';
 export { fetchTeachers } from './teacherActions';
 export { fetchClasses } from './classesActions';
 export { fetchBookings } from './bookingsActions';

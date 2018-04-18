@@ -4,12 +4,7 @@
 import axios from 'axios';
 import {
 	STUDENTS_PAYLOAD,
-	RESPONSE,
-	UPDATE_DOCTOR_IMAGE,
-	FETCHING_ADDRESS,
-	PARSED_ADDRESS,
-	CHANGE_PAYMENT_OPTIONS,
-	EDITING_DOCTOR,
+    EDITING_STUDENT,
 } from './actionTypes';
 import { fetchAction } from '.';
 import { APPLICATION_ROUTES, GOOGLE_GEO_URL_LOCATION } from '../../constants';
@@ -72,8 +67,8 @@ export const deleteStudent = ({ id, deleted = true, page = 1, limit = 30 }) => (
  * @param {*} id 
  * @param {*} toggle true/false
  */
-export const toggleEditingStudent = (id, toggle) => (dispatch) => {
-	dispatch({ type: EDITING_DOCTOR, editingStudent: toggle ? id : undefined });
+export const toggleEditingStudent = ({ id, toggle }) => (dispatch) => {
+	dispatch({ type: EDITING_STUDENT, editingStudent: toggle ? id : undefined });
 };
 
 /**
@@ -84,23 +79,23 @@ export const toggleEditingStudent = (id, toggle) => (dispatch) => {
  * @param {*} licensedState 
  * @param {*} email 
  */
-export const updateStudent = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
+export const updateStudent = ({ id, name, email }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
 	const formData = new FormData();
 	// todo can add picture property if required
-	formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
-	axios.post(APPLICATION_ROUTES.UPDATE_DOCTOR, formData, { headers })
-		.then(response => {
-			const { data: { code } } = response;
-			if (code === 100) {
-				dispatch(fetchStudents({ page, limit }));
-			}
+	formData.append('data', JSON.stringify({ id, name, email }));
+	// axios.post(APPLICATION_ROUTES.UPDATE_DOCTOR, formData, { headers })
+	// 	.then(response => {
+	// 		const { data: { code } } = response;
+	// 		if (code === 100) {
+	// 			dispatch(fetchStudents({ page, limit }));
+	// 		}
 
-			dispatch(fetchAction({ fetching: false }));
-			dispatch(toggleEditingStudent(id, false));
-		}).catch(err => {
-			console.log(err);
+	// 		dispatch(fetchAction({ fetching: false }));
+	// 		dispatch(toggleEditingStudent(id, false));
+	// 	}).catch(err => {
+	// 		console.log(err);
 
-			dispatch(fetchAction({ fetching: false }));
-		});
+	// 		dispatch(fetchAction({ fetching: false }));
+	// 	});
 }

@@ -96,3 +96,17 @@ $global_white_color: #fff;
 .delete {
 	background: #c13731;
 }
+.green {
+	background: #3fa38a;
+}
+.input-field {
+	padding: 5px;
+	border: none;
+	width: 100%;
+	outline: none;
+	border-radius: 3px;
+	border: solid 1px silver;
+}
+.input-field:focus {
+	outline: none
+}
