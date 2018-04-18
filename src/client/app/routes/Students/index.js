@@ -25,7 +25,7 @@ import LitniteImage from '../../components/Image';
 
 import './index.scss';
 
-class FeedbacksListing extends Component {
+class StudentsListing extends Component {
 	
 	constructor(props) {
 		super(props);
@@ -169,4 +169,4 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(FeedbacksListing);
+)(StudentsListing);
