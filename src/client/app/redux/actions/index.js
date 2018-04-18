@@ -6,7 +6,9 @@ export { adminLogin } from './loginActions';
  */
 export {
 	fetchStudents,
-	toggleEditingStudent
+	toggleEditingStudent,
+	updateStudent,
+	verifyEntity,
 } from './studentActions';
 export { fetchTeachers } from './teacherActions';
 export { fetchClasses } from './classesActions';

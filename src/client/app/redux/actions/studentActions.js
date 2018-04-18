@@ -70,6 +70,27 @@ export const deleteStudent = ({ id, deleted = true, page = 1, limit = 30 }) => (
 export const toggleEditingStudent = ({ id, toggle }) => (dispatch) => {
 	dispatch({ type: EDITING_STUDENT, editingStudent: toggle ? id : undefined });
 };
+/**
+ * verify the entity
+ * @param {*} param0 
+ */
+export const  verifyEntity = ({ userEmail, page, limit }) => (dispatch) => {
+	dispatch(fetchAction({ fetching: true }));
+	const body = { userEmail };
+
+	axios.post(APPLICATION_ROUTES.VERIFY_ENTITY, body, { headers })
+		.then((response) => {
+			const { data: { code } } = response;
+			if (code == 100) {
+				dispatch(fetchStudents({ page, limit }));
+			}
+
+			dispatch(fetchAction({ fetching: false }));
+		}).catch((err) => {
+			// handle rejection
+			dispatch(fetchAction({ fetching: false }));
+		})
+}
 
 /**
  * update the doctor information
@@ -79,23 +100,27 @@ export const toggleEditingStudent = ({ id, toggle }) => (dispatch) => {
  * @param {*} licensedState 
  * @param {*} email 
  */
-export const updateStudent = ({ id, name, email }) => (dispatch) => {
+export const updateStudent = ({ id, name, email, updateEmail, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
+
+	const body = { userId: id, name, userEmail: email, updateEmail };
+	// console.log(body);
 	const formData = new FormData();
 	// todo can add picture property if required
-	formData.append('data', JSON.stringify({ id, name, email }));
-	// axios.post(APPLICATION_ROUTES.UPDATE_DOCTOR, formData, { headers })
-	// 	.then(response => {
-	// 		const { data: { code } } = response;
-	// 		if (code === 100) {
-	// 			dispatch(fetchStudents({ page, limit }));
-	// 		}
+	formData.append('data', JSON.stringify({ id, name, userEmail: email, updateEmail }));
+	axios.post(APPLICATION_ROUTES.UPDATE_ENTITY, body, { headers })
+		.then(response => {
+			const { data: { code } } = response;
+			console.log(code);
+			if (code === 100) {
+				dispatch(fetchStudents({ page, limit }));
+			}
 
-	// 		dispatch(fetchAction({ fetching: false }));
-	// 		dispatch(toggleEditingStudent(id, false));
-	// 	}).catch(err => {
-	// 		console.log(err);
+			dispatch(fetchAction({ fetching: false }));
+			dispatch(toggleEditingStudent(id, false));
+		}).catch(err => {
+			console.log(err);
 
-	// 		dispatch(fetchAction({ fetching: false }));
-	// 	});
+			dispatch(fetchAction({ fetching: false }));
+		});
 }

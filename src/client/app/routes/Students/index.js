@@ -21,6 +21,8 @@ import {
 	switchNavigation,
 	fetchStudents,
 	toggleEditingStudent,
+	updateStudent,
+	verifyEntity,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -75,7 +77,19 @@ class StudentsListing extends Component {
 	}
 
 	render() {
-		const { fetching, students: { studentsData, editingStudent}, triggerToggleEditingStudent } = this.props;
+		const {
+			fetching,
+			students: {
+				studentsData,
+				editingStudent,
+				limit,
+				page,
+			}, 
+			triggerToggleEditingStudent,
+			triggerUpdateStudent,
+			triggerVerifyEntity,
+		} = this.props;
+
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
@@ -107,7 +121,7 @@ class StudentsListing extends Component {
 									<td>
 										{
 											editingStudent === student._id ?
-												<input type='text' className='input-field' placeholder={student.name}/> :
+												<input type='text' className='input-field' ref={ name => this.name = name } placeholder={student.name}/> :
 												student.name
 										}
 									</td>
@@ -122,7 +136,7 @@ class StudentsListing extends Component {
 									<td>
 										{
 											editingStudent === student._id ?
-												<input type='text' className='input-field' placeholder={student.email}/> :
+												<input type='text' className='input-field' ref={ email => this.email = email } placeholder={student.email}/> :
 												student.email
 										}
 									</td>
@@ -131,7 +145,7 @@ class StudentsListing extends Component {
 										{
 											student.isVerified ?
 												'Verified':
-												<button className='btn-sm app-btn verify'>Verify</button>
+												<button onClick={() => triggerVerifyEntity(student.email, page, limit)} className='btn-sm app-btn verify'>Verify</button>
 										}
 										{/* {student.isVerified ? 'Yes': 'No'} */}
 									</td>
@@ -144,7 +158,15 @@ class StudentsListing extends Component {
 										{
 											editingStudent && editingStudent === student._id ?
 												<p>
-													<button className='btn btn-sm app-btn green'>Update</button>&nbsp;
+													<button className='btn btn-sm app-btn green' onClick={() => {
+															const name = this.name.value || undefined;
+															const email = this.email.value || undefined;
+															triggerUpdateStudent({ id: student._id, name, email: student.email, updateEmail: email, limit, page });
+															// alert(this.name.value);
+															// alert(this.email.value);
+														}}>
+														Update
+													</button>&nbsp;
 													<button className='btn btn-sm app-btn recover' onClick={() => triggerToggleEditingStudent(student._id)}>Cancel</button>
 												</p> :
 												<button className='btn btn-sm btn-default' onClick={() => triggerToggleEditingStudent(student._id, true)}>
@@ -178,6 +200,8 @@ const mapDispatchToProps = dispatch => {
 		triggerFetchStudents: (page, limit) => dispatch(fetchStudents({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
 		triggerToggleEditingStudent: (id, toggle) => dispatch(toggleEditingStudent({ id, toggle })),
+		triggerUpdateStudent: ({ id, name, email, updateEmail, limit, page }) => dispatch(updateStudent({ id, name, email, updateEmail, limit, page })),
+		triggerVerifyEntity: (email, page, limit) => dispatch(verifyEntity({ userEmail: email, page, limit })),
 	};
 }
 
