@@ -25,3 +25,7 @@ export const EDITING_CLASS='EDITING_CLASS';
 // actions related to bookings
 export const BOOKINGS_PAYLOAD='BOOKINGS_PAYLOAD';
 export const EDITING_BOOKING='EDITING_BOOKING';
+
+// actions realted to transactions
+export const TRANSACTIONS_PAYLOAD='TRANSACTIONS_PAYLOAD';
+export const EDITING_TRANSACTION='EDITING_TRANSACTION';

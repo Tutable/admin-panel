@@ -20,6 +20,7 @@
 	 teachers: reducers.teachersReducer,
 	 classes: reducers.classesReducer,
 	 dashboard: reducers.adminDashboard,
+	 transactions: reducers.transactionsReducer,
 	 navigation: reducers.navigationReducer,
 	 bookings: reducers.bookingsReducer,
  }), initialState, enhancer );

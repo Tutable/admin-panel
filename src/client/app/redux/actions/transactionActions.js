@@ -3,8 +3,8 @@
  */
 import axios from 'axios';
 import {
-	TEACHERS_PAYLOAD,
-	EDITING_TEACHER,
+	TRANSACTIONS_PAYLOAD,
+	EDITING_TRANSACTION,
 } from './actionTypes';
 import { fetchAction } from '.';
 import { APPLICATION_ROUTES } from '../../constants';
@@ -18,15 +18,15 @@ const headers = {
  * fetch users
  * @param {*} dispatch 
  */
-export const fetchTeachers = ({ page = 1, limit = 30 }) => (dispatch) => {
+export const fetchTransactions = ({ page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
 
-	axios.post(APPLICATION_ROUTES.LIST_TEACHERS, { page, limit }, { headers })
+	axios.post(APPLICATION_ROUTES.LIST_TRANSACTIONS, { page, limit }, { headers })
 		.then((response) => {
 			const { data: { code, message, data, length, limit, page } } = response;
 			if (code === 100) {
 				// handle listing here
-				dispatch({ type: TEACHERS_PAYLOAD, paginatedTeachers: data, page, limit, length });
+				dispatch({ type: TRANSACTIONS_PAYLOAD, paginatedTransactions: data, page, limit, length });
 			} else {
 				// handle error here
 			}
@@ -44,15 +44,15 @@ export const fetchTeachers = ({ page = 1, limit = 30 }) => (dispatch) => {
  * 
  * @todo handle http failures
  */
-// export const deleteTeacher = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
+// export const deleteTransaction = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
 // 	dispatch(fetchAction({ fetching: true }));
 // 	const body = { id, deleted };
-// 	axios.post(APPLICATION_ROUTES.DELETE_TEACHER, body, { headers })
+// 	axios.post(APPLICATION_ROUTES.DELETE_TRANSACTION, body, { headers })
 // 		.then((response) => {
 // 			const { data: { code, message } } = response;
 // 			if (code === 100) {
 // 				// deleted success
-// 				dispatch(fetchTeachers({ page, limit }));
+// 				dispatch(fetchTransactions({ page, limit }));
 // 			} else {
 
 // 			}
@@ -67,8 +67,8 @@ export const fetchTeachers = ({ page = 1, limit = 30 }) => (dispatch) => {
 //  * @param {*} id 
 //  * @param {*} toggle true/false
 //  */
-// export const toggleEditingTeacher = (id, toggle) => (dispatch) => {
-// 	dispatch({ type: EDITING_TEACHER, editingTeacher: toggle ? id : undefined });
+// export const toggleEditingTransaction = (id, toggle) => (dispatch) => {
+// 	dispatch({ type: EDITING_TRANSACTION, editingTransaction: toggle ? id : undefined });
 // };
 
 /**
@@ -79,20 +79,20 @@ export const fetchTeachers = ({ page = 1, limit = 30 }) => (dispatch) => {
  * @param {*} licensedState 
  * @param {*} email 
  */
-// export const updateTeacher = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
+// export const updateTransaction = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
 // 	dispatch(fetchAction({ fetching: true }));
 // 	const formData = new FormData();
 // 	// todo can add picture property if required
 // 	formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
-// 	axios.post(APPLICATION_ROUTES.UPDATE_TEACHER, formData, { headers })
+// 	axios.post(APPLICATION_ROUTES.UPDATE_TRANSACTION, formData, { headers })
 // 		.then(response => {
 // 			const { data: { code } } = response;
 // 			if (code === 100) {
-// 				dispatch(fetchTeachers({ page, limit }));
+// 				dispatch(fetchTransactions({ page, limit }));
 // 			}
 
 // 			dispatch(fetchAction({ fetching: false }));
-// 			dispatch(toggleEditingTeacher(id, false));
+// 			dispatch(toggleEditingTransaction(id, false));
 // 		}).catch(err => {
 // 			console.log(err);
 

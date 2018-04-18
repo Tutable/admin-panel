@@ -8,4 +8,5 @@ export { fetchStudents } from './studentActions';
 export { fetchTeachers } from './teacherActions';
 export { fetchClasses } from './classesActions';
 export { fetchBookings } from './bookingsActions';
+export { fetchTransactions } from './transactionActions';
 export { default as switchNavigation } from './navigationActions';
