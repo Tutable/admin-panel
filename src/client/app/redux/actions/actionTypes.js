@@ -17,3 +17,7 @@ export const EDITING_STUDENT='EDITING_STUDENT';
 // actions related to teacher
 export const TEACHERS_PAYLOAD=`TEACHERS_PAYLOAD`;
 export const EDITING_TEACHER='EDITING_TEACHER';
+
+// actions related to classes
+export const CLASSES_PAYLOAD='CLASSES_PAYLOAD';
+export const EDITING_CLASS='EDITING_CLASS';

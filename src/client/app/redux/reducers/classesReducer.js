@@ -2,34 +2,34 @@
  * action reducer for users listing admin page
  */
 import {
-	STUDENTS_PAYLOAD,
-	EDITING_STUDENT,
+	CLASSES_PAYLOAD,
+	EDITING_CLASS,
 } from '../actions/actionTypes';
 
 const defaultState = {
-	studentsData: undefined,
+	classesData: undefined,
 	page: 0,
 	limit: 30,
 	length: 0,
-	editingStudent: undefined,
+	editingClass: undefined,
 };
 /**
  * default state handler/reducer for doctor
  */
 export default (state=defaultState, {
 	type,
-	paginatedStudents = [],
+	paginatedClasses = [],
 	payload,
 	page = 1,
 	limit = 10,
 	length = 0,
-	editingStudent = undefined,
+	editingClass = undefined,
 }) => {
 	switch(type) {
-		case STUDENTS_PAYLOAD:
-			return Object.assign({}, state, { studentsData: paginatedStudents, page, limit, length });
-		case EDITING_STUDENT:
-			return Object.assign({}, state, { editingStudent });
+		case CLASSES_PAYLOAD:
+			return Object.assign({}, state, { classesData: paginatedClasses, page, limit, length });
+		case EDITING_CLASS:
+			return Object.assign({}, state, { editingClass });
 		default:
 			return state;
 	}

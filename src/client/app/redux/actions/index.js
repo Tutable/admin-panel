@@ -6,4 +6,5 @@ export { adminLogin } from './loginActions';
  */
 export { fetchStudents } from './studentActions';
 export { fetchTeachers } from './teacherActions';
+export { fetchClasses } from './classesActions';
 export { default as switchNavigation } from './navigationActions';

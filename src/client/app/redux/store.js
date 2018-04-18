@@ -18,6 +18,7 @@
 	 // admin reducers
 	 students: reducers.studentsReducer,
 	 teachers: reducers.teachersReducer,
+	 classes: reducers.classesReducer,
 	 dashboard: reducers.adminDashboard,
 	 navigation: reducers.navigationReducer,
  }), initialState, enhancer );

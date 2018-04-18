@@ -7,6 +7,7 @@ export const APPLICATION_ROUTES = {
 	ADMIN_LOGIN: 				`${SERVER_BASE_URL}admin/authenticate`,
 	LIST_STUDENTS:				`${SERVER_BASE_URL}student/list`,
 	LIST_TEACHERS:				`${SERVER_BASE_URL}teachers/list`,
+	LIST_CLASSES:				`${SERVER_BASE_URL}class/listAll`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,
 	// DOCTOR_PICTURE:				`${SERVER_BASE_URL}doctors/picture/`,
@@ -44,5 +45,5 @@ export const navigationIndexer = {
 	'categories': 7
 }
 
-export const MAPS_API_KEY='AIzaSyDyuUeVZlCxg2uO3Mtgk1OakL0KQ-FgHHo';
-export const GOOGLE_GEO_URL_LOCATION = location => `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${MAPS_API_KEY}`;
+// export const MAPS_API_KEY='AIzaSyDyuUeVZlCxg2uO3Mtgk1OakL0KQ-FgHHo';
+// export const GOOGLE_GEO_URL_LOCATION = location => `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${MAPS_API_KEY}`;

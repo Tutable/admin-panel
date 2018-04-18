@@ -4,12 +4,7 @@
 import axios from 'axios';
 import {
 	TEACHERS_PAYLOAD,
-	RESPONSE,
-	UPDATE_DOCTOR_IMAGE,
-	FETCHING_ADDRESS,
-	PARSED_ADDRESS,
-	CHANGE_PAYMENT_OPTIONS,
-	EDITING_DOCTOR,
+	EDITING_TEACHER,
 } from './actionTypes';
 import { fetchAction } from '.';
 import { APPLICATION_ROUTES, GOOGLE_GEO_URL_LOCATION } from '../../constants';
@@ -49,32 +44,32 @@ export const fetchTeachers = ({ page = 1, limit = 30 }) => (dispatch) => {
  * 
  * @todo handle http failures
  */
-export const deleteTeacher = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
-	dispatch(fetchAction({ fetching: true }));
-	const body = { id, deleted };
-	axios.post(APPLICATION_ROUTES.DELETE_DOCTOR, body, { headers })
-		.then((response) => {
-			const { data: { code, message } } = response;
-			if (code === 100) {
-				// deleted success
-				dispatch(fetchTeachers({ page, limit }));
-			} else {
+// export const deleteTeacher = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
+// 	dispatch(fetchAction({ fetching: true }));
+// 	const body = { id, deleted };
+// 	axios.post(APPLICATION_ROUTES.DELETE_TEACHER, body, { headers })
+// 		.then((response) => {
+// 			const { data: { code, message } } = response;
+// 			if (code === 100) {
+// 				// deleted success
+// 				dispatch(fetchTeachers({ page, limit }));
+// 			} else {
 
-			}
-			dispatch(fetchAction({ fetching: false }))
-		}).catch((err) => {
-			dispatch(fetchAction({ fetching: false }))
-		})
-}
+// 			}
+// 			dispatch(fetchAction({ fetching: false }))
+// 		}).catch((err) => {
+// 			dispatch(fetchAction({ fetching: false }))
+// 		})
+// }
 
-/**
- * toggle action to edit doctor
- * @param {*} id 
- * @param {*} toggle true/false
- */
-export const toggleEditingTeacher = (id, toggle) => (dispatch) => {
-	dispatch({ type: EDITING_DOCTOR, editingTeacher: toggle ? id : undefined });
-};
+// /**
+//  * toggle action to edit doctor
+//  * @param {*} id 
+//  * @param {*} toggle true/false
+//  */
+// export const toggleEditingTeacher = (id, toggle) => (dispatch) => {
+// 	dispatch({ type: EDITING_TEACHER, editingTeacher: toggle ? id : undefined });
+// };
 
 /**
  * update the doctor information
@@ -84,23 +79,23 @@ export const toggleEditingTeacher = (id, toggle) => (dispatch) => {
  * @param {*} licensedState 
  * @param {*} email 
  */
-export const updateTeacher = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
-	dispatch(fetchAction({ fetching: true }));
-	const formData = new FormData();
-	// todo can add picture property if required
-	formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
-	axios.post(APPLICATION_ROUTES.UPDATE_DOCTOR, formData, { headers })
-		.then(response => {
-			const { data: { code } } = response;
-			if (code === 100) {
-				dispatch(fetchTeachers({ page, limit }));
-			}
+// export const updateTeacher = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
+// 	dispatch(fetchAction({ fetching: true }));
+// 	const formData = new FormData();
+// 	// todo can add picture property if required
+// 	formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
+// 	axios.post(APPLICATION_ROUTES.UPDATE_TEACHER, formData, { headers })
+// 		.then(response => {
+// 			const { data: { code } } = response;
+// 			if (code === 100) {
+// 				dispatch(fetchTeachers({ page, limit }));
+// 			}
 
-			dispatch(fetchAction({ fetching: false }));
-			dispatch(toggleEditingTeacher(id, false));
-		}).catch(err => {
-			console.log(err);
+// 			dispatch(fetchAction({ fetching: false }));
+// 			dispatch(toggleEditingTeacher(id, false));
+// 		}).catch(err => {
+// 			console.log(err);
 
-			dispatch(fetchAction({ fetching: false }));
-		});
-}
+// 			dispatch(fetchAction({ fetching: false }));
+// 		});
+// }
