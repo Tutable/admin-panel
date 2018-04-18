@@ -117,15 +117,12 @@ class BookingsListing extends Component {
 									<td>
 										<p style={{ position: 'absolute' }}><Image image={studentImage}/></p>
 										<p style={{ marginLeft: '60px', top: '0'}}>
+										<FontAwesome name="user"/>&nbsp;
 											{booking.student.name}<br/>{booking.student.id}<br/>
 											<a href={`mailto:${booking.student.email}?Subject=Query%20regarding%20booking #${booking._id}`} target="_top">Send Query Mail</a>
 										</p>
 									</td>
-									<td>
-										{
-											moment(booking.timestamp).format('LLL')
-										}
-									</td>
+									<td>{ moment(booking.timestamp).format('LLL') }</td>
 									<td>
 										{
 											!booking.confirmed && !booking.cancelled ?
