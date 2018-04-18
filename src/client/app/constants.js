@@ -6,6 +6,7 @@ export const APPLICATION_ROUTES = {
 	// admin URLS
 	ADMIN_LOGIN: 				`${SERVER_BASE_URL}admin/authenticate`,
 	LIST_STUDENTS:				`${SERVER_BASE_URL}student/list`,
+	LIST_TEACHERS:				`${SERVER_BASE_URL}teachers/list`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,
 	// DOCTOR_PICTURE:				`${SERVER_BASE_URL}doctors/picture/`,

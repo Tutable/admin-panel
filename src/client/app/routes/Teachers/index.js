@@ -18,8 +18,8 @@ import { SERVER_BASE_URL, APPLICATION_ROUTES, navigationIndexer } from '../../co
 import LoadingOverlay from '../../components/LoadingOverlay';
 import Image from '../../components/Image';
 import {
+	fetchTeachers,
 	switchNavigation,
-	fetchStudents,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -35,9 +35,9 @@ class FeedbacksListing extends Component {
 	}
 
 	componentWillMount() {
-		const { triggerSwitchNavigation, triggerFetchStudents } = this.props;
+		const { triggerSwitchNavigation, triggerFetchTeachers } = this.props;
 		triggerSwitchNavigation(navigationIndexer.teachers);
-		triggerFetchStudents();
+		triggerFetchTeachers();
 	}
 
 	componentDidUpdate() {
@@ -74,7 +74,7 @@ class FeedbacksListing extends Component {
 	}
 
 	render() {
-		const { fetching, students: { studentsData } } = this.props;
+		const { fetching, teachers: { teachersData } } = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
@@ -87,7 +87,7 @@ class FeedbacksListing extends Component {
 						<th>Name</th>
 						<th>Linked account</th>
 						<th>Email</th>
-						<th>address</th>
+						{/* <th>address</th> */}
 						<th>Verification</th>
 						<th>Delete</th>
 						<th>Actions</th>
@@ -95,36 +95,36 @@ class FeedbacksListing extends Component {
 				</thead>
 				<tbody>
 					{
-						studentsData ? 
-							studentsData.map((student, index) => {
-								const imageUrl = student.picture ? student.picture.indexOf('http') !== -1 ? student.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${student.picture}`: undefined;
-								return <tr key={`student-${index}`}>
+						teachersData ? 
+							teachersData.map((teacher, index) => {
+								const imageUrl = teacher.picture ? teacher.picture.indexOf('http') !== -1 ? teacher.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${teacher.picture}`: undefined;
+								return <tr key={`teacher-${index}`}>
 									<td>
 										{index+1}
 									</td>
 									<td><Image image={imageUrl}/></td>
-									<td>{student.name}</td>
+									<td>{teacher.name}</td>
 									<td>
 									{
-										student.facebook ? 
+										teacher.facebook ? 
 											<FontAwesome style={{ color: '#4468b0' }} name="facebook"/> :
-											student.google ?
+											teacher.google ?
 												<FontAwesome style={{ color: '#e8453c'}} name="google"/> :
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
-									<td>{student.email}</td>
-									<td>{student.address.location}</td>
+									<td>{teacher.email}</td>
+									{/* <td>{teacher.address.location}</td> */}
 									<td>
 										{
-											student.isVerified ?
+											teacher.isVerified ?
 												'Verified':
 												<button className='btn-sm app-btn verify'>Verify</button>
 										}
-										{/* {student.isVerified ? 'Yes': 'No'} */}
+										{/* {teacher.isVerified ? 'Yes': 'No'} */}
 									</td>
 									<td>
-										<button className={ student.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
-											{ student.deleted ? 'Recover': 'Delete' }		
+										<button className={ teacher.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
+											{ teacher.deleted ? 'Recover': 'Delete' }		
 										</button>
 									</td>
 									<td>
@@ -155,15 +155,15 @@ class FeedbacksListing extends Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		triggerFetchStudents: (page, limit) => dispatch(fetchStudents({ page, limit })),
+		triggerFetchTeachers: (page, limit) => dispatch(fetchTeachers({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
 	};
 }
 
 const mapStateToProps = state => {
 	console.log(state);
-	const { fetching, students } = state;
-	return { fetching, students };
+	const { fetching, teachers } = state;
+	return { fetching, teachers };
 }
 
 export default connect(

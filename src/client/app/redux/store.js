@@ -17,11 +17,7 @@
 	 login: reducers.loginReducer,
 	 // admin reducers
 	 students: reducers.studentsReducer,
-	//  adminDoctorsListing: reducers.adminDoctorsListingReducer,
-	//  adminConsultationsListing: reducers.adminConsultationsListingReducer,
+	 teachers: reducers.teachersReducer,
 	 dashboard: reducers.adminDashboard,
-	//  anxiometer: reducers.anxiometerReducer,
-	//  feedback: reducers.feedbacksReducer,
-	//  ailments: reducers.ailmentsReducer,
 	 navigation: reducers.navigationReducer,
  }), initialState, enhancer );
