@@ -1,7 +1,7 @@
 /**
  * This file defines application level constants
  */
-export const SERVER_BASE_URL = process.env.NODE_ENV ? "http://ec2-18-216-140-140.us-east-2.compute.amazonaws.com/development/api/" : "http://localhost:3000/api/";
+export const SERVER_BASE_URL = process.env.NODE_ENV ? "http://ec2-13-59-33-113.us-east-2.compute.amazonaws.com/development/api/" : "http://localhost:3000/api/";
 export const APPLICATION_ROUTES = {
 	// admin URLS
 	ADMIN_LOGIN: 				`${SERVER_BASE_URL}admin/authenticate`,
