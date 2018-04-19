@@ -13,8 +13,9 @@ import {
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 
-// import { fetchStatistics } from '../../redux/actions';
+import { fetchStatistics } from '../../redux/actions';
 
+import './index.scss';
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
@@ -24,7 +25,7 @@ class Dashboard extends Component {
 
 		const { fetching, statistics, triggerFetchStatistics } = this.props;
 		// fetch on mounting or tranistioning among pages
-		// triggerFetchStatistics();
+		triggerFetchStatistics();
 	}
 
 	componentDidUpdate() {
@@ -35,62 +36,70 @@ class Dashboard extends Component {
 		// console.log(fetching, statistics, triggerFetchStatistics);
 		if (!fetching && !statistics) {
 			console.log('stats fetching');
-			// triggerFetchStatistics();
+			triggerFetchStatistics();
 		}
 	}
 
 	render() {
 		const { statistics, fetching } = this.props;
-		return statistics ? <section>
+		return statistics ? <section className='dashboard-container'>
 			<CardColumns>
 				<Card inverse color="danger">
 					<CardBody className='text-center'>
-						<CardTitle>Total Registered Doctors</CardTitle>
+						<CardTitle>Total Active Teachers</CardTitle>
 						<CardText>
 							<h1>
-								{statistics.doctor.total}
+								{statistics.teachers.active}
 							</h1>
-							from {statistics.doctor.specializations} specialization fields.
+							<br/>
+							<span className='field-container'>Total {statistics.teachers.total}</span>&nbsp;&nbsp;&nbsp;<span className='field-container'>{statistics.teachers.deleted} Deleted</span>
 						</CardText>
 					</CardBody>
 				</Card>
 				<Card inverse color="primary">
 					<CardBody className='text-center'>
-						<CardTitle>Total Consultation Requests</CardTitle>
+						<CardTitle>Total Active Students</CardTitle>
 						<CardText>
 							<h1>
-								{statistics.consultations.consultations}
+								{statistics.students.active}
 							</h1>
+							<br/>
+							<span className='field-container'>Total {statistics.students.total}</span>&nbsp;&nbsp;&nbsp;<span className='field-container'>{statistics.students.deleted} Deleted</span>
 						</CardText>
 					</CardBody>
 				</Card>
 				<Card inverse color="success">
 					<CardBody className='text-center'>
-						<CardTitle>Average consultations per doctor</CardTitle>
+						<CardTitle>Total Active Classes</CardTitle>
 						<CardText>
 							<h1>
-								{Number.parseFloat(statistics.consultations.average).toPrecision(2)}
+								{statistics.classes}
 							</h1>
 						</CardText>
 					</CardBody>
 				</Card>
 				<Card inverse color="info">
 					<CardBody className='text-center'>
-						<CardTitle>Patients Contacted</CardTitle>
+						<CardTitle>Bookings</CardTitle>
 						<CardText>
 							<h1>
-								{statistics.consultations.contacted}
+								{statistics.bookings.total}
 							</h1>
+							<br/>
+							<span className='field-container'>{statistics.bookings.confirmed} Confirmed</span> <span className='field-container'>{statistics.bookings.cancelled} Cancelled</span>
 						</CardText>
 					</CardBody>
 				</Card>
 				<Card inverse color="warning">
 					<CardBody className='text-center'>
-						<CardTitle>Patients Contact Pending</CardTitle>
+						<CardTitle>Transactions</CardTitle>
 						<CardText>
 							<h1>
-								{statistics.consultations.pending}
+								{statistics.transactions.total}
 							</h1>
+							<span className='field-container'>Refunded {statistics.transactions.refunded}</span>&nbsp;&nbsp;&nbsp;
+							<span className='field-container'>{statistics.transactions.pendingPayouts} Payouts due</span><br/><br/>
+							<span className='field-container'>{statistics.transactions.completedPayouts} Payouts completed</span>
 						</CardText>
 					</CardBody>
 				</Card>
@@ -102,7 +111,7 @@ class Dashboard extends Component {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		triggerFetchStatistics: () => dispatch(fetchStatistics()),
+		triggerFetchStatistics: () => dispatch(fetchStatistics({})),
 	};
 };
 

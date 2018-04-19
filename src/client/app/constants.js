@@ -1,7 +1,7 @@
 /**
  * This file defines application level constants
  */
-export const SERVER_BASE_URL = process.env.NODE_ENV ? "http://ec2-18-216-140-140.us-east-2.compute.amazonaws.com/production/api/" : "http://localhost:3000/api/";
+export const SERVER_BASE_URL = process.env.NODE_ENV ? "http://ec2-18-216-140-140.us-east-2.compute.amazonaws.com/development/api/" : "http://localhost:3000/api/";
 export const APPLICATION_ROUTES = {
 	// admin URLS
 	ADMIN_LOGIN: 				`${SERVER_BASE_URL}admin/authenticate`,
@@ -16,6 +16,7 @@ export const APPLICATION_ROUTES = {
 	DELETE_ENTITY:				`${SERVER_BASE_URL}admin/delete`,
 	UPDATE_CLASS:				`${SERVER_BASE_URL}admin/classUpdate`,
 	DELETE_CLASS:				`${SERVER_BASE_URL}admin/deleteClass`,
+	APP_STATS:					`${SERVER_BASE_URL}admin/statistics`,
 	CATEGORIES_LISTING:			`${SERVER_BASE_URL}categories/list`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,

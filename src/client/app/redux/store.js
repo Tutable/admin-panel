@@ -19,7 +19,7 @@
 	 students: reducers.studentsReducer,
 	 teachers: reducers.teachersReducer,
 	 classes: reducers.classesReducer,
-	 dashboard: reducers.adminDashboard,
+	 dashboard: reducers.dashboardReducer,
 	 transactions: reducers.transactionsReducer,
 	 navigation: reducers.navigationReducer,
 	 bookings: reducers.bookingsReducer,

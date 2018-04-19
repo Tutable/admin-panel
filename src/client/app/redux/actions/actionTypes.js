@@ -30,3 +30,6 @@ export const EDITING_BOOKING='EDITING_BOOKING';
 // actions realted to transactions
 export const TRANSACTIONS_PAYLOAD='TRANSACTIONS_PAYLOAD';
 export const EDITING_TRANSACTION='EDITING_TRANSACTION';
+
+// dashboard actions
+export const DASHBOARD_PAYLOAD='DASHBOARD_PAYLOAD';

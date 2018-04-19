@@ -6,4 +6,4 @@ export { default as teachersReducer } from './teachersReducer';
 export { default as classesReducer } from './classesReducer';
 export { default as bookingsReducer } from './bookingsReducer';
 export { default as transactionsReducer } from './transactionsReducer';
-export { default as adminDashboard } from './adminDashboardReducer';
+export { default as dashboardReducer } from './dashboardReducer';
