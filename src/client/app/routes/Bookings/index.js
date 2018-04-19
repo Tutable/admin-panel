@@ -130,7 +130,7 @@ class BookingsListing extends Component {
 												booking.confirmed ?
 													<p>
 														<p style={{ color: 'green' }}><FontAwesome name="check"/> Confirmed</p>
-														<FontAwesome name="money"/> Paid {booking.classDetails.rate} AUD
+														<FontAwesome name="money"/> Paid {booking.rate ? booking.rate : booking.classDetails.rate} AUD
 													</p> :
 													<p style={{ color: '#bf3836' }}><FontAwesome name="times"/> Declined</p>
 										}

@@ -88,16 +88,17 @@ export const toggleEditingClass = ({ id, toggle }) => (dispatch) => {
  * update the doctor information
  * @param {*} id 
  * @param {*} name 
- * @param {*} speciality 
+ * @param {*}  
  * @param {*} licensedState 
  * @param {*} email 
  */
-export const updateClass = ({ id, name, speciality, licensedState, email, page = 1, limit = 30 }) => (dispatch) => {
+export const updateClass = ({ id, name, category, level, rate, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
-	const formData = new FormData();
+	const body = { classId: id, name, category, level, rate };
+	// const formData = new FormData();
 	// todo can add picture property if required
-	formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
-	axios.post(APPLICATION_ROUTES.UPDATE_CLASSES, formData, { headers })
+	// formData.append('data', JSON.stringify({ id, name, speciality, licensedState, email }));
+	axios.post(APPLICATION_ROUTES.UPDATE_CLASS, body, { headers })
 		.then(response => {
 			const { data: { code } } = response;
 			if (code === 100) {

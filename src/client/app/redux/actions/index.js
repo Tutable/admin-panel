@@ -21,6 +21,7 @@ export {
 export {
 	fetchClasses,
 	toggleEditingClass,
+	updateClass,
 } from './classesActions';
 export { fetchBookings } from './bookingsActions';
 export { fetchTransactions } from './transactionActions';

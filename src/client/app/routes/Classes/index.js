@@ -25,6 +25,7 @@ import {
 	switchNavigation,
 	fetchClasses,
 	toggleEditingClass,
+	updateClass,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -89,6 +90,7 @@ class ClassesListing extends Component {
 				categories,
 			},
 			triggerToggleEditingClass,
+			triggerUpdateClass,
 		} = this.props;
 		return <section>
 			<ToastContainer />
@@ -126,23 +128,13 @@ class ClassesListing extends Component {
 										{/* {singleClass.category.title} */}
 										{
 											editingClass === singleClass.id ? 
-												<Dropdown size="sm" isOpen={true} toggle={() => {}}>
-													<DropdownToggle caret>
-														{singleClass.category.title}
-													</DropdownToggle>
-													<DropdownMenu>
-														{
-															categories && categories.map((category, index) =>
-																<DropdownItem>{ category.title }</DropdownItem>
-															)
-														}
-														{/* <DropdownItem header>Header</DropdownItem>
-														<DropdownItem disabled>Action</DropdownItem>
-														<DropdownItem>Another Action</DropdownItem>
-														<DropdownItem divider/>
-														<DropdownItem>Another Action</DropdownItem> */}
-													</DropdownMenu>
-												</Dropdown> :
+												<select ref={ category => this.category = category }>
+													{
+														categories && categories.map((category, index) =>
+															<option key={ `category=${index}` } value={ category.id }>{ category.title }</option>
+														)
+													}
+												</select> :
 												singleClass.category.title
 										}
 									</td>
@@ -157,23 +149,11 @@ class ClassesListing extends Component {
 										{
 											editingClass && editingClass === singleClass.id ?
 												<p>
-													<Dropdown size="sm" isOpen={true} toggle={() => {}}>
-														<DropdownToggle caret>
-															{singleClass.level === 1 ? 'Beginner' :
-																singleClass.level === 2 ? 'Inetrmediate':
-																	singleClass.level === 3 ? 'Advanced' : ''}
-														</DropdownToggle>
-														<DropdownMenu>
-															<DropdownItem>Beginner</DropdownItem>
-															<DropdownItem>Inetermediate</DropdownItem>
-															<DropdownItem>Advanced</DropdownItem>
-															{/* <DropdownItem header>Header</DropdownItem>
-															<DropdownItem disabled>Action</DropdownItem>
-															<DropdownItem>Another Action</DropdownItem>
-															<DropdownItem divider/>
-															<DropdownItem>Another Action</DropdownItem> */}
-														</DropdownMenu>
-													</Dropdown>
+													<select name='level' ref={ level => this.level = level }>
+														<option value='1'>Beginner</option>
+														<option value='2'>Intermediate</option>
+														<option value='3'>Advanced</option>
+													</select>
 												</p> :
 												singleClass.level === 1 ? 'Beginner' :
 													singleClass.level === 2 ? 'Inetrmediate':
@@ -199,11 +179,12 @@ class ClassesListing extends Component {
 											editingClass && editingClass === singleClass.id ?
 												<p>
 													<button className='btn btn-sm app-btn green' onClick={() => {
+															const level = this.level.value || undefined;
+															const category = this.category.value || undefined;
 															const name = this.name.value || undefined;
-															const email = this.email.value || undefined;
-															// triggerUpdateTeacher({ id: teacher._id, name, email: teacher.email, updateEmail: email, limit, page });
-															// alert(this.name.value);
-															// alert(this.email.value);
+															const rate = this.rate.value || undefined;
+
+															triggerUpdateClass({ id: singleClass.id, name, level, category, rate });
 														}}>
 														Update
 													</button>&nbsp;
@@ -240,6 +221,7 @@ const mapDispatchToProps = dispatch => {
 		triggerFetchClasses: (page, limit) => dispatch(fetchClasses({ page, limit })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
 		triggerToggleEditingClass: (id, toggle) => dispatch(toggleEditingClass({ id, toggle })),
+		triggerUpdateClass: ({ id, name, category, level, rate }) => dispatch(updateClass({ id, name, category, level, rate })),
 	};
 }
 
