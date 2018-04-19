@@ -100,11 +100,11 @@ class AdminComponent extends Component {
 							<p></p>
 							<Form>
 								<FormGroup>
-									<Label for="username">Username</Label>
+									<Label for="username">Username</Label>&nbsp;
 									<input ref={adminUname => this.adminUname = adminUname} className='custom-field' placeholder='Username for admin'/>
 								</FormGroup>
 								<FormGroup>
-									<Label for="username">Password</Label>
+									<Label for="username">Password</Label>&nbsp;
 									<input ref={adminPass => this.adminPass = adminPass} type='password' className='custom-field' placeholder='Password for admin'/>
 								</FormGroup>
 								<p className='text-center'>
