@@ -97,15 +97,14 @@ class AdminComponent extends Component {
 					<Col md={4} sm={3} xs={2}></Col>
 					<Col md={4} sm={6} xs={8}>
 						<section className='admin-login' id='admin-login'>
-							<p></p>
 							<Form>
 								<FormGroup>
-									<Label for="username">Username</Label>&nbsp;
-									<input ref={adminUname => this.adminUname = adminUname} className='custom-field' placeholder='Username for admin'/>
+									<Label for="username">Username</Label><br/>
+									<input ref={adminUname => this.adminUname = adminUname} className='custom-field login-field' placeholder='Username for admin'/>
 								</FormGroup>
 								<FormGroup>
-									<Label for="username">Password</Label>&nbsp;
-									<input ref={adminPass => this.adminPass = adminPass} type='password' className='custom-field' placeholder='Password for admin'/>
+									<Label for="username">Password</Label><br/>
+									<input ref={adminPass => this.adminPass = adminPass} type='password' className='custom-field login-field' placeholder='Password for admin'/>
 								</FormGroup>
 								<p className='text-center'>
 									<button className="litnite-btn" onClick={this.onLogin}>LOGIN&nbsp;&nbsp;&nbsp;<FontAwesome name="chevron-right"/></button>
