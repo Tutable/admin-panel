@@ -15,6 +15,7 @@ export const APPLICATION_ROUTES = {
 	VERIFY_ENTITY:				`${SERVER_BASE_URL}admin/verify`,
 	DELETE_ENTITY:				`${SERVER_BASE_URL}admin/delete`,
 	UPDATE_CLASS:				`${SERVER_BASE_URL}admin/classUpdate`,
+	DELETE_CLASS:				`${SERVER_BASE_URL}admin/deleteClass`,
 	CATEGORIES_LISTING:			`${SERVER_BASE_URL}categories/list`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,

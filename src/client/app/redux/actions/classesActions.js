@@ -59,8 +59,8 @@ export const fetchClasses = ({ page = 1, limit = 30 }) => (dispatch) => {
  */
 export const deleteClass = ({ id, deleted = true, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
-	const body = { id, deleted };
-	axios.post(APPLICATION_ROUTES.DELETE_CLASSES, body, { headers })
+	const body = { classId: id, deleted };
+	axios.post(APPLICATION_ROUTES.DELETE_CLASS, body, { headers })
 		.then((response) => {
 			const { data: { code, message } } = response;
 			if (code === 100) {

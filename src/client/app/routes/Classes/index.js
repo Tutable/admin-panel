@@ -26,6 +26,7 @@ import {
 	fetchClasses,
 	toggleEditingClass,
 	updateClass,
+	deleteClass,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -91,6 +92,7 @@ class ClassesListing extends Component {
 			},
 			triggerToggleEditingClass,
 			triggerUpdateClass,
+			triggerDeleteClass,
 		} = this.props;
 		return <section>
 			<ToastContainer />
@@ -170,7 +172,7 @@ class ClassesListing extends Component {
 									</td>
 									<td>{moment(singleClass.created).format('LLL')}</td>
 									<td>
-										<button className={ singleClass.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'}>
+										<button className={ singleClass.deleted ? 'btn-sm app-btn recover' : 'btn-sm app-btn delete'} onClick={() => triggerDeleteClass({ id: singleClass.id, deleted: singleClass.deleted ? false : true })}>
 											{ singleClass.deleted ? 'Recover': 'Delete' }		
 										</button>
 									</td>
@@ -222,6 +224,7 @@ const mapDispatchToProps = dispatch => {
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
 		triggerToggleEditingClass: (id, toggle) => dispatch(toggleEditingClass({ id, toggle })),
 		triggerUpdateClass: ({ id, name, category, level, rate }) => dispatch(updateClass({ id, name, category, level, rate })),
+		triggerDeleteClass: ({ id, deleted }) => dispatch(deleteClass({ id, deleted })),
 	};
 }
 
