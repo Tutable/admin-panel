@@ -39,6 +39,7 @@ class ClassesListing extends Component {
 
 		this.handlePaginationBack = this.handlePaginationBack.bind(this);
 		this.handlePaginationNext = this.handlePaginationNext.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentWillMount() {
@@ -65,6 +66,21 @@ class ClassesListing extends Component {
 		} else {
 			// console.log(`fetch page ${page+1} with ${limit} items`);
 			// triggerFetchFeedbacks(page+1, limit)
+		}
+	}
+
+	/**
+	 * handle the change in search field
+	 * @param {*} param0 
+	 */
+	handleChange() {
+		const { triggerFetchTeacherClasses, triggerFetchClasses } = this.props;
+		// console.log(this.search.value);
+		if (this.search.value) {
+			// inititate search
+			triggerFetchTeacherClasses(this.search.value);
+		} else {
+			triggerFetchClasses();
 		}
 	}
 
@@ -98,6 +114,10 @@ class ClassesListing extends Component {
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
 			<h2>Classes</h2>
+			<section>
+				<input ref={ search => this.search = search } onChange={this.handleChange} className='input-field' type='text' placeholder='Search classes by teacher id'/>
+			</section>
+			<br/>
 			<Table responsive striped hover className='application-table' style={{ zoom: 0.8 }}>
 				<thead>
 					<tr>
@@ -221,6 +241,7 @@ class ClassesListing extends Component {
 const mapDispatchToProps = dispatch => {
 	return {
 		triggerFetchClasses: (page, limit) => dispatch(fetchClasses({ page, limit })),
+		triggerFetchTeacherClasses: (teacherId, page, limit) => dispatch(fetchClasses({ page, limit, teacherId })),
 		triggerSwitchNavigation: active => dispatch(switchNavigation({ active })),
 		triggerToggleEditingClass: (id, toggle) => dispatch(toggleEditingClass({ id, toggle })),
 		triggerUpdateClass: ({ id, name, category, level, rate }) => dispatch(updateClass({ id, name, category, level, rate })),

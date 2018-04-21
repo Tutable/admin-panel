@@ -19,10 +19,11 @@ const headers = {
  * fetch users
  * @param {*} dispatch 
  */
-export const fetchClasses = ({ page = 1, limit = 30 }) => (dispatch) => {
+export const fetchClasses = ({ teacherId, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
 
-	axios.post(APPLICATION_ROUTES.LIST_CLASSES, { page, limit }, { headers })
+	const body = teacherId ? { teacherId, page, limit } : { page, limit };
+	axios.post(APPLICATION_ROUTES.LIST_CLASSES, body, { headers })
 		.then((response) => {
 			const { data: { code, message, data, length, limit, page } } = response;
 			if (code === 100) {
