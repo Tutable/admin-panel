@@ -108,6 +108,7 @@ class TeachersListing extends Component {
 						<th>Verification</th>
 						<th>Delete</th>
 						<th>Actions</th>
+						<th>Certifications</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -175,6 +176,18 @@ class TeachersListing extends Component {
 												<button className='btn btn-sm btn-default' onClick={() => triggerToggleEditingTeacher(teacher._id, true)}>
 													Edit
 												</button>
+										}
+									</td>
+									<td>
+										{
+											teacher.certs ?
+												<section>
+													{teacher.certs.childrenCertificate ? <a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a> : <a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request children certificate</a>}
+													{teacher.certs.policeCertificate ? <a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a> : <a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request police certificate</a>}
+												</section>
+												:
+												<a href={`mailto:${teacher.email}?Subject=Missing%20Children and Police %20Certificates`} target="_top">Request Police and Teacher certificate</a>
+
 										}
 									</td>
 								</tr>
