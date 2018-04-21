@@ -28,3 +28,4 @@ export { fetchBookings } from './bookingsActions';
 export { fetchTransactions } from './transactionActions';
 export { default as switchNavigation } from './navigationActions';
 export { default as fetchStatistics } from './dashboardActions';
+export { fetchContent, saveContent } from './contentActions';

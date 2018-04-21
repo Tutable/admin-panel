@@ -23,4 +23,5 @@
 	 transactions: reducers.transactionsReducer,
 	 navigation: reducers.navigationReducer,
 	 bookings: reducers.bookingsReducer,
+	 content: reducers.contentReducer,
  }), initialState, enhancer );

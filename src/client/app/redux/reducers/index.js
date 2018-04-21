@@ -7,3 +7,4 @@ export { default as classesReducer } from './classesReducer';
 export { default as bookingsReducer } from './bookingsReducer';
 export { default as transactionsReducer } from './transactionsReducer';
 export { default as dashboardReducer } from './dashboardReducer';
+export { default as contentReducer } from './contentReducer';

@@ -33,3 +33,5 @@ export const EDITING_TRANSACTION='EDITING_TRANSACTION';
 
 // dashboard actions
 export const DASHBOARD_PAYLOAD='DASHBOARD_PAYLOAD';
+// content actions
+export const CONTENT_PAYLOAD='CONTENT_PAYLOAD';

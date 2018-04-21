@@ -18,6 +18,9 @@ export const APPLICATION_ROUTES = {
 	DELETE_CLASS:				`${SERVER_BASE_URL}admin/deleteClass`,
 	APP_STATS:					`${SERVER_BASE_URL}admin/statistics`,
 	CATEGORIES_LISTING:			`${SERVER_BASE_URL}categories/list`,
+
+	CONTENT_DETAILS:			`${SERVER_BASE_URL}content/details`,
+	CONTENT_SAVE:				`${SERVER_BASE_URL}content/save`,
 	// ADMIN_STATS:				`${SERVER_BASE_URL}admin/stats`,
 	// DELETE_DOCTOR:				`${SERVER_BASE_URL}doctors/delete`,
 	// DOCTOR_PICTURE:				`${SERVER_BASE_URL}doctors/picture/`,
@@ -52,7 +55,8 @@ export const navigationIndexer = {
 	'classes': 4,
 	'bookings': 5,
 	'transactions': 6,
-	'categories': 7
+	'categories': 7,
+	'content': 8,
 }
 
 // export const MAPS_API_KEY='AIzaSyDyuUeVZlCxg2uO3Mtgk1OakL0KQ-FgHHo';

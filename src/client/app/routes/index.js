@@ -13,6 +13,7 @@ import Teachers from './Teachers';
 import Classes from './Classes';
 import Bookings from './Bookings';
 import Transactions from './Transactions';
+import Content from './Content';
 
 export default () => {
 	return <Provider store={ initStore() }>
@@ -26,6 +27,7 @@ export default () => {
 				<Route path='/classes' component={Classes}/>
 				<Route path='/bookings' component={Bookings}/>
 				<Route path='/transactions' component={Transactions}/>
+				<Route path='/content' component={Content}/>
 				{/* <Route path="/doctors" component={DoctorsListing}/>
 				<Route path="/consultations" component={Consultation}/>
 				<Route path="/addDoctor" component={AddDoctor}/>
