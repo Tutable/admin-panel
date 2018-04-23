@@ -125,6 +125,7 @@ class ClassesListing extends Component {
 						<th>Category</th>
 						<th>Teacher</th>
 						<th>Difficulty</th>
+						<th>Why Qualified</th>
 						<th>Price (AUD)</th>
 						<th>Created</th>
 						<th>Delete</th>
@@ -180,6 +181,9 @@ class ClassesListing extends Component {
 													singleClass.level === 2 ? 'Inetrmediate':
 														singleClass.level === 3 ? 'Advanced' : ''
 										}
+									</td>
+									<td>
+										{ singleClass.whyQualified }
 									</td>
 									<td>
 										{/* {singleClass.rate} */}
