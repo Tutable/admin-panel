@@ -182,12 +182,34 @@ class TeachersListing extends Component {
 										{
 											teacher.certs ?
 												<section>
-													{teacher.certs.childrenCertificate ? <a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a> : <a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request children certificate</a>}
-													{teacher.certs.policeCertificate ? <a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a> : <a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request police certificate</a>}
+													{
+														teacher.certs.childrenCertificate ? 
+															<span>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a><br/>
+																<a href={`mailto:${teacher.email}?Subject=Resend children certificate`}>Request Children Certificate</a>
+															</span> : 
+															<a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request Children Certificate</a>
+													}
+													{
+														teacher.certs.policeCertificate ?
+															<span>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a><br/>
+																<a href={`mailto:${teacher.email}?Subject=Resend police verification`}>Request Police Certificate</a>
+															</span> :
+															<a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request Police Certificate</a>
+													}
 												</section>
 												:
 												<a href={`mailto:${teacher.email}?Subject=Missing%20Children and Police %20Certificates`} target="_top">Request Police and Teacher certificate</a>
-
+										}
+										<hr/>
+										{
+											teacher.degree ? 
+												<span>
+													<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.degree}`} className='btn app-btn btn-sm verify'>Degree</a><br/>
+													<a href={`mailto:${teacher.email}?Subject=Resend Degree document`}>Request Degree</a>
+												</span> :
+													<a href={`mailto:${teacher.email}?Subject=Resend Degree document`}>Request Degree</a>
 										}
 									</td>
 								</tr>
