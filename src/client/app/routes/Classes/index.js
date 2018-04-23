@@ -58,14 +58,14 @@ class ClassesListing extends Component {
 
 	handlePaginationNext(e) {
 		e.preventDefault();
-		// const { students: { page, limit, length }, triggerFetchFeedbacks } = this.props;
+		const { classes: { page, limit, length }, triggerFetchClasses } = this.props;
 		toast.dismiss();
 		if (length < limit) {
 			// no more data
 			toast.info('No more data');
 		} else {
 			// console.log(`fetch page ${page+1} with ${limit} items`);
-			// triggerFetchFeedbacks(page+1, limit)
+			triggerFetchClasses(page+1, limit);
 		}
 	}
 
@@ -87,10 +87,9 @@ class ClassesListing extends Component {
 	handlePaginationBack(e){
 		e.preventDefault();
 		toast.dismiss();
-		// const { feedback: { length, page, limit }, triggerFetchFeedbacks } = this.props;
+		const { classes: { length, page, limit }, triggerFetchClasses } = this.props;
 		if (page > 1) {
-			// console.log(`fetch page ${page-1} with ${limit} items`);
-			// triggerFetchFeedbacks(page-1, limit);
+			triggerFetchFeedbacks(page-1, limit);
 		} else {
 			toast.info('Cannot go back anymore');
 		}
@@ -226,11 +225,11 @@ class ClassesListing extends Component {
 				</tbody>
 			</Table>
 			<section className='text-center'>
-				<button className='app-btn btn-sm plain paginationBack'>
+				<button className='app-btn btn-sm plain paginationBack' onClick={this.handlePaginationBack}>
 					<FontAwesome name='chevron-left'/>
 				</button>
 				&nbsp;&nbsp;
-				<button className='app-btn btn-sm plain paginationNext'>
+				<button className='app-btn btn-sm plain paginationNext' onClick={this.handlePaginationNext}>
 					<FontAwesome name='chevron-right'/>
 				</button>
 			</section>
