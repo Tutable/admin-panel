@@ -6,10 +6,11 @@ import Favicon from 'react-favicon';
 import './index.scss';
 // load images
 import Tutable from '../../assets/images/tutable.png';
+import favicon from '../../assets/images/favicon.png';
 // import PreRIcon from '../../assets/images/PreR-icon.png'
 
 export default () => <section className="account-header">
-	<Favicon url={Tutable}/>
+		<Favicon url={favicon}/>
 		<img src={Tutable} height={30}/>
 		{/* <Navbar color="dark" style={{ background: 'linear-gradient(90deg, rgba(65,212,167,1) 0%, rgba(74,214,168,1) 35%, rgba(65,212,167,1), rgba(170,237,181,1) 100%)'}} light expand="md">
 			<NavbarBrand>
