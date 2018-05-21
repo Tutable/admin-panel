@@ -52,7 +52,7 @@ class AdminComponent extends Component {
 		this.realignContent();
 		window.onresize = this.realignContent;
 
-		document.title = 'PreR Admin';
+		document.title = 'Tutable Admin';
 	}
 
 	onLogin(e) {
