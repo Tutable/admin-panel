@@ -1,7 +1,7 @@
 /**
  * This file defines application level constants
  */
-export const SERVER_BASE_URL = process.env.NODE_ENV ? "https://betutable.com.au/production/api/" : "http://localhost:3000/api/";
+export const SERVER_BASE_URL = process.env.NODE_ENV ? "https://betutable.com.au/production/api/" : "http://localhost:3001/api/";
 export const APPLICATION_ROUTES = {
 	// admin URLS
 	ADMIN_LOGIN: 				`${SERVER_BASE_URL}admin/authenticate`,

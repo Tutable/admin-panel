@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default ({ username, password }) => (dispatch) => {
 	const body ={ username, password };
-	axios.post(APPLICATION_ROUTES.LOGIN, body, {
+	axios.post(APPLICATION_ROUTES.ADMIN_LOGIN, body, {
 		headers: { 'Content-Type': 'application/json' }
 	})
 		.then((response) => {

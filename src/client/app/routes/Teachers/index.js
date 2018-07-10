@@ -104,7 +104,7 @@ class TeachersListing extends Component {
 						<th>Name</th>
 						<th>Linked account</th>
 						<th>Email</th>
-						<th>address</th>
+						<th>Address</th>
 						<th>Verification</th>
 						<th>Delete</th>
 						<th>Actions</th>
