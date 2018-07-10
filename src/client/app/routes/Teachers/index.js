@@ -144,7 +144,7 @@ class TeachersListing extends Component {
 												teacher.email
 										}
 									</td>
-									<td>{teacher.address  && teacher.address.location}</td>
+									<td>{teacher.address  && teacher.address.suburb}, {teacher.address  && teacher.address.state}</td>
 									<td>
 										{
 											teacher.isVerified ?
