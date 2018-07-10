@@ -104,7 +104,7 @@ class TeachersListing extends Component {
 						<th>Name</th>
 						<th>Linked account</th>
 						<th>Email</th>
-						{/* <th>address</th> */}
+						<th>address</th>
 						<th>Verification</th>
 						<th>Delete</th>
 						<th>Actions</th>
@@ -144,7 +144,7 @@ class TeachersListing extends Component {
 												teacher.email
 										}
 									</td>
-									{/* <td>{teacher.address.location}</td> */}
+									<td>{teacher.address  && teacher.address.location}</td>
 									<td>
 										{
 											teacher.isVerified ?
