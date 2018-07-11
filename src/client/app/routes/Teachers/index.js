@@ -3,31 +3,22 @@
  */
 import React, { Component } from 'react';
 import { connect }  from 'react-redux';
-import {
-	Table,
-	Button,
-	Pagination,
-	PaginationItem,
-	PaginationLink
-} from 'reactstrap';
+import { Table } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 import { toast, ToastContainer } from 'react-toastify';
-import moment from 'moment';
 
-import { SERVER_BASE_URL, APPLICATION_ROUTES, navigationIndexer } from '../../constants';
+import { SERVER_BASE_URL, navigationIndexer } from '../../constants';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import Image from '../../components/Image';
 import {
 	fetchTeachers,
 	switchNavigation,
-	verifyEntity,
 	deleteTeacherEntity,
 	updateTeacher,
 	toggleEditingTeacher,
 	verifyTeacherEntity,
 	verifyCerts,
 } from '../../redux/actions';
-import LitniteImage from '../../components/Image';
 
 import './index.scss';
 
