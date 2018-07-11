@@ -52,19 +52,22 @@ class Content extends Component {
 
 	render() {
 		const { content, triggerSaveContent } = this.props
-		console.log(content && content.about);
-		console.log(content && content.help);
+		console.log('Content');
+		console.log(content);
+		
 		return <section>
 			<h2>About, Help, Terms & Conditions</h2><hr/>
 			About us<br/>
-			<textarea ref={ about => this.about = about } className='app-textarea' placeholder='Add about us description'>
+			<textarea ref= { about => this.about = about } className='app-textarea' placeholder='Add about us description'>
+				{/* { content.about } */}
 			</textarea><br/>
 			Help<br/>
 			<textarea ref={ help => this.help = help } className='app-textarea' placeholder='Add Help text'>
+				{ content.help }
 			</textarea><br/>
 			Terms and Conditions<br/>
 			<textarea ref={ terms => this.terms = terms } className='app-textarea' placeholder='Add Terms and conditions'>
-				
+				{ content.terms }
 			</textarea><br/>
 			<button className='btn app-btn' onClick={() => {
 				let about = this.about.value;
@@ -92,7 +95,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-	console.log(state);
+	console.log('state changed');
 	const { fetching, content } = state;
 	return { fetching, content };
 }

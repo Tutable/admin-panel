@@ -25,6 +25,7 @@ import {
 	updateTeacher,
 	toggleEditingTeacher,
 	verifyTeacherEntity,
+	verifyCerts,
 } from '../../redux/actions';
 import LitniteImage from '../../components/Image';
 
@@ -90,7 +91,8 @@ class TeachersListing extends Component {
 			triggerToggleEditingTeacher,
 			triggerUpdateTeacher,
 			triggerDeleteTeacherEntity,
-			triggerVerifyTeacherEntity
+			triggerVerifyTeacherEntity,
+			triggerVerifyCerts,
 		} = this.props;
 		return <section>
 			<ToastContainer />
@@ -166,8 +168,6 @@ class TeachersListing extends Component {
 															const name = this.name.value || undefined;
 															const email = this.email.value || undefined;
 															triggerUpdateTeacher({ id: teacher._id, name, email: teacher.email, updateEmail: email, limit, page });
-															// alert(this.name.value);
-															// alert(this.email.value);
 														}}>
 														Update
 													</button>&nbsp;
@@ -185,15 +185,18 @@ class TeachersListing extends Component {
 													{
 														teacher.certs.childrenCertificate ? 
 															<span>
-																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a><br/>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a>
+																&nbsp;<button onClick={() => triggerVerifyCerts({ id: teacher._id, childrenCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Children Certificates</button><br/>
 																<a href={`mailto:${teacher.email}?Subject=Resend children certificate`}>Request Children Certificate</a>
 															</span> : 
 															<a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request Children Certificate</a>
 													}
+													<hr/>
 													{
 														teacher.certs.policeCertificate ?
 															<span>
-																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a><br/>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a>
+																&nbsp;<button onClick={() => triggerVerifyCerts({ id: teacher._id, policeCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Police Certificate</button><br/>
 																<a href={`mailto:${teacher.email}?Subject=Resend police verification`}>Request Police Certificate</a>
 															</span> :
 															<a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request Police Certificate</a>
@@ -241,6 +244,7 @@ const mapDispatchToProps = dispatch => {
 		triggerVerifyTeacherEntity: (email, page, limit) => dispatch(verifyTeacherEntity({ userEmail: email, page, limit })),
 		triggerDeleteTeacherEntity: (email, deleted, page, limit) => dispatch(deleteTeacherEntity({ userEmail: email, deleted, page, limit })),
 		triggerUpdateTeacher: ({ id, name, email, updateEmail, page, limit }) => dispatch(updateTeacher({ id, name, email, updateEmail, limit, page })),
+		triggerVerifyCerts: ({ id, policeCertificateVerified, childrenCertificateVerified, page = 1, limit = 30 }) => dispatch(verifyCerts({ id, policeCertificateVerified, childrenCertificateVerified, page, limit })),
 	};
 }
 

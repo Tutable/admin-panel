@@ -13,9 +13,9 @@ export const fetchContent = () => dispatch => {
 
 	axios.post(APPLICATION_ROUTES.CONTENT_DETAILS)
 		.then((response) => {
-			console.log(response);
+			// console.log(response);
 			const { data: { data } } = response;
-			dispatch({ type: CONTENT_PAYLOAD, content: data });
+			dispatch({ type: CONTENT_PAYLOAD, contentData: data });
 
 			dispatch(fetchAction({ fetching: false }))
 		}).catch(err => {

@@ -17,6 +17,7 @@ export {
 	deleteTeacherEntity,
 	toggleEditingTeacher,
 	verifyTeacherEntity,
+	verifyCerts,
 } from './teacherActions';
 export {
 	fetchClasses,

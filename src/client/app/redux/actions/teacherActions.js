@@ -116,7 +116,37 @@ export const updateTeacher = ({ id, name, email, updateEmail, page = 1, limit = 
 			dispatch(toggleEditingTeacher(id, false));
 		}).catch(err => {
 			console.log(err);
-
 			dispatch(fetchAction({ fetching: false }));
 		});
+}
+
+/**
+ * action dispatcher for the verts verification
+ * @param {*} id
+ * @param {Boolean} policeCertificateVerified
+ * @param {Boolean} childrenCertificateVerified
+ */
+export const verifyCerts = ({
+	id,
+	policeCertificateVerified,
+	childrenCertificateVerified,
+	page = 1,
+	limit = 30,
+}) => (dispatch) => {
+	dispatch(fetchAction({ fetching: true }));
+	const body = { userId: id, policeCertificateVerified, childrenCertificateVerified };
+
+	axios.post(APPLICATION_ROUTES.VERIFY_CERTS, body, { headers })
+		.then(response => {
+			const { data: { code } } = response;
+			if (code === 100) {
+				dispatch(fetchTeachers({ page, limit }));
+				dispatch(fetchAction({ fetching: false }));
+			} else if (code === 104) {
+				dispatch(fetchAction({ fetching: false }));
+			}
+		}).catch(err => {
+			console.log(err);
+			dispatch(fetchAction({ fetching: false }));
+		})
 }
