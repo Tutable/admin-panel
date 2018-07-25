@@ -57,16 +57,16 @@ class Content extends Component {
 		return <section>
 			<h2>About, Help, Terms & Conditions</h2><hr/>
 			About us<br/>
+			{content && content.contentData && content.contentData.about}<br/>
 			<textarea ref= { about => this.about = about } className='app-textarea' placeholder='Add about us description'>
-				
 			</textarea>&nbsp;<br/>
 			Help<br/>
+			{content && content.contentData && content.contentData.help}<br/>
 			<textarea ref={ help => this.help = help } className='app-textarea' placeholder='Add Help text'>
-				{/* { content.help } */}
 			</textarea><br/>
 			Terms and Conditions<br/>
+			{content && content.contentData && content.contentData.terms}<br/>
 			<textarea ref={ terms => this.terms = terms } className='app-textarea' placeholder='Add Terms and conditions'>
-				{/* { content.terms } */}
 			</textarea><br/>
 			<button className='btn app-btn' onClick={() => {
 				let about = this.about.value;
@@ -80,7 +80,7 @@ class Content extends Component {
 					terms = undefined;
 
 				triggerSaveContent(about, terms, help);
-			}}>SAVE CONTENT</button><br/><br/>
+			}}>Save Content</button><br/><br/>
 		</section>
 	}
 }
