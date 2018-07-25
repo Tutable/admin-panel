@@ -52,22 +52,21 @@ class Content extends Component {
 
 	render() {
 		const { content, triggerSaveContent } = this.props
-		console.log('Content');
-		console.log(content);
+		// console.log(content);
 		
 		return <section>
 			<h2>About, Help, Terms & Conditions</h2><hr/>
 			About us<br/>
 			<textarea ref= { about => this.about = about } className='app-textarea' placeholder='Add about us description'>
-				{/* { content.about } */}
-			</textarea><br/>
+				
+			</textarea>&nbsp;<br/>
 			Help<br/>
 			<textarea ref={ help => this.help = help } className='app-textarea' placeholder='Add Help text'>
-				{ content.help }
+				{/* { content.help } */}
 			</textarea><br/>
 			Terms and Conditions<br/>
 			<textarea ref={ terms => this.terms = terms } className='app-textarea' placeholder='Add Terms and conditions'>
-				{ content.terms }
+				{/* { content.terms } */}
 			</textarea><br/>
 			<button className='btn app-btn' onClick={() => {
 				let about = this.about.value;
