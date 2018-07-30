@@ -106,12 +106,12 @@ class TeachersListing extends Component {
 				</thead>
 				<tbody>
 					{
-						teachersData ? 
+						teachersData ?
 							teachersData.map((teacher, index) => {
 								const imageUrl = teacher.picture ? teacher.picture.indexOf('http') !== -1 ? teacher.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${teacher.picture}`: undefined;
 								return <tr key={`teacher-${(limit * (page - 1)) + index}`}>
 									<td>
-										{index+1}
+										{ (limit * (page - 1)) + 1 }
 									</td>
 									<td><Image image={imageUrl}/></td>
 									<td>
