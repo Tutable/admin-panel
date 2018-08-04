@@ -117,7 +117,7 @@ class StudentsListing extends Component {
 								const imageUrl = student.picture ? student.picture.indexOf('http') !== -1 ? student.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${student.picture}`: undefined;
 								return <tr key={`student-${ (limit * page) + index }`}>
 									<td>
-										{index+1}
+										{ (limit * (page - 1)) +  index + 1 }
 									</td>
 									<td><Image image={imageUrl}/></td>
 									<td>

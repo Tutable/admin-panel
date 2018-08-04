@@ -137,7 +137,7 @@ class ClassesListing extends Component {
 							classesData.map((singleClass, index) => {
 								const imageUrl = (singleClass.teacher && singleClass.teacher.picture) ? singleClass.teacher.picture.indexOf('http') !== -1 ? singleClass.teacher.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${singleClass.teacher.picture}`: undefined;
 								return <tr key={`class-${index}`}>
-									<td>{index+1}</td>
+									<td>{(limit * (page - 1 ) + index + 1)}</td>
 									<td>
 										{/* {singleClass.name} */}
 										{

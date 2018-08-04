@@ -98,7 +98,7 @@ class BookingsListing extends Component {
 								const teacherImage = booking.teacher.picture ? booking.teacher.picture.indexOf('http') !== -1 ? booking.teacher.picture : `${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length-1)}${booking.teacher.picture}`: undefined;
 								return <tr key={`booking-${index}`}>
 									<td>
-										{index+1}
+										{(limit * (page - 1) + index + 1)}
 									</td>
 									<td>{booking._id}</td>
 									<td>
