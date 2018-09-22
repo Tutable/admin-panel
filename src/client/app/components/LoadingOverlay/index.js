@@ -9,7 +9,7 @@ import './index.sass';
 
 export default ({ show = false, key=Math.random()*1000 }) => {
 	return <section style={{display: show ? "block" : "none"}} className="loader-container">
-		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		{/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 			<defs>
 				<filter id="goo">
 				<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -17,7 +17,7 @@ export default ({ show = false, key=Math.random()*1000 }) => {
 				<feBlend in="SourceGraphic" in2="goo" operator="atop" />
 				</filter>
 			</defs>
-		</svg>
+		</svg> */}
 		<div className="loader">
 			<div></div>
 			<div></div>

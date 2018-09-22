@@ -177,7 +177,7 @@ class TeachersListing extends Component {
 														teacher.certs.childrenCertificate ? 
 															<span>
 																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a>
-																&nbsp;<button onClick={() => triggerVerifyCerts({ id: teacher._id, childrenCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Children Certificates</button><br/>
+																&nbsp;{ teacher.certs.childrenCertificateVerified ? <span><FontAwesome name='check'/> &nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, childrenCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Children Certificates</button>}<br/>
 																<a href={`mailto:${teacher.email}?Subject=Resend children certificate`}>Request Children Certificate</a>
 															</span> : 
 															<a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request Children Certificate</a>
@@ -187,7 +187,7 @@ class TeachersListing extends Component {
 														teacher.certs.policeCertificate ?
 															<span>
 																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a>
-																&nbsp;<button onClick={() => triggerVerifyCerts({ id: teacher._id, policeCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Police Certificate</button><br/>
+																&nbsp;{teacher.certs.policeCertificateVerified ? <span><FontAwesome name='check'/>&nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, policeCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Police Certificate</button>}<br/>
 																<a href={`mailto:${teacher.email}?Subject=Resend police verification`}>Request Police Certificate</a>
 															</span> :
 															<a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request Police Certificate</a>
