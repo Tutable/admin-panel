@@ -72,7 +72,7 @@ class TransactionsListing extends Component {
 	}
 
 	render() {
-		const { fetching, transactions: { transactionsData } } = this.props;
+		const { fetching, transactions: { transactionsData, page, limit } } = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
