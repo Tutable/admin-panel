@@ -176,25 +176,25 @@ class TeachersListing extends Component {
 													{
 														teacher.certs.childrenCertificate ? 
 															<span>
-																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>Teacher Certificate</a>
-																&nbsp;{ teacher.certs.childrenCertificateVerified ? <span><FontAwesome name='check'/> &nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, childrenCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Children Certificates</button>}<br/>
-																<a href={`mailto:${teacher.email}?Subject=Resend children certificate`}>Request Children Certificate</a>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.childrenCertificate}`} className='btn app-btn btn-sm verify'>WWCC Certificate</a>
+																&nbsp;{ teacher.certs.childrenCertificateVerified ? <span><FontAwesome name='check'/> &nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, childrenCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify WWCC Certificate</button>}<br/>
+																<a href={`mailto:${teacher.email}?Subject=Resend WWCC`}>Request WWCC Certificate</a>
 															</span> : 
-															<a href={`mailto:${teacher.email}?Subject=Missing%20Children%20Certificate`} target="_top">Request Children Certificate</a>
+															<a href={`mailto:${teacher.email}?Subject=Missing%WWCCC`} target="_top">Request WWCC Certificate</a>
 													}
 													<hr/>
 													{
 														teacher.certs.policeCertificate ?
 															<span>
-																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Certificate</a>
-																&nbsp;{teacher.certs.policeCertificateVerified ? <span><FontAwesome name='check'/>&nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, policeCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Police Certificate</button>}<br/>
-																<a href={`mailto:${teacher.email}?Subject=Resend police verification`}>Request Police Certificate</a>
+																<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.certs.policeCertificate}`} className='btn app-btn btn-sm verify'>Police Check</a>
+																&nbsp;{teacher.certs.policeCertificateVerified ? <span><FontAwesome name='check'/>&nbsp; Verified</span> : <button onClick={() => triggerVerifyCerts({ id: teacher._id, policeCertificateVerified: true, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Police Check</button>}<br/>
+																<a href={`mailto:${teacher.email}?Subject=Resend police verification`}>Request Police Check</a>
 															</span> :
-															<a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request Police Certificate</a>
+															<a href={`mailto:${teacher.email}?Subject=Missing%20Police%20Certificate`} target="_top">Request Police Check</a>
 													}
 												</section>
 												:
-												<a href={`mailto:${teacher.email}?Subject=Missing%20Children and Police %20Certificates`} target="_top">Request Police and Teacher certificate</a>
+												<a href={`mailto:${teacher.email}?Subject=Missing%20Children and Police %20Certificates`} target="_top">Request Police Check and WWCC certificate</a>
 										}
 										<hr/>
 										{
