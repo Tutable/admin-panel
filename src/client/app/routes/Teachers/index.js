@@ -238,7 +238,7 @@ const mapDispatchToProps = dispatch => {
 		triggerDeleteTeacherEntity: (email, deleted, page, limit) => dispatch(deleteTeacherEntity({ userEmail: email, deleted, page, limit })),
 		triggerUpdateTeacher: ({ id, name, email, updateEmail, page, limit }) => dispatch(updateTeacher({ id, name, email, updateEmail, limit, page })),
 		triggerVerifyCerts: ({ id, policeCertificateVerified, childrenCertificateVerified, page = 1, limit = 30 }) => dispatch(verifyCerts({ id, policeCertificateVerified, childrenCertificateVerified, page, limit })),
-		triggerVerifyDegree: ({ id }) => dispatch(updateTeacher({ id, degreeAssetVerified: true, limit, page })),
+		triggerVerifyDegree: ({ id, page, limit }) => dispatch(updateTeacher({ id, degreeAssetVerified: true, limit, page })),
 	};
 }
 
