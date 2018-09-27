@@ -202,7 +202,7 @@ class TeachersListing extends Component {
 											teacher.degree ? 
 												<span>
 													<a href={`${SERVER_BASE_URL.substring(0, SERVER_BASE_URL.length - 1)}${teacher.degree}`} className='btn app-btn btn-sm verify'>Degree</a>
-													&nbsp;{teacher.degreeAssetVerified ? <span><FontAwesome name='check' />&nbsp; Verified</span> : <button onClick={() => triggerVerifyDegree({ id: teacher._id email: teacher.email, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Degree</button>}<br/>
+													&nbsp;{teacher.degreeAssetVerified ? <span><FontAwesome name='check' />&nbsp; Verified</span> : <button onClick={() => triggerVerifyDegree({ id: teacher._id, email: teacher.email, page, limit })} className='btn btn-app btn-sm btn-success'>Verify Degree</button>}<br/>
 													<a href={`mailto:${teacher.email}?Subject=Resend Degree document`}>Request Degree</a>
 												</span> :
 													<a href={`mailto:${teacher.email}?Subject=Resend Degree document`}>Request Degree</a>
