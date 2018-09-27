@@ -100,10 +100,10 @@ export const  verifyTeacherEntity = ({ userEmail, page, limit }) => (dispatch) =
  * @param {*} name 
  * @param {*} email 
  */
-export const updateTeacher = ({ id, name, email, updateEmail, page = 1, limit = 30 }) => (dispatch) => {
+export const updateTeacher = ({ id, name, email, updateEmail, degreeAssetVerified, page = 1, limit = 30 }) => (dispatch) => {
 	dispatch(fetchAction({ fetching: true }));
 	
-	const body = { userId: id, name, userEmail: email, updateEmail };
+	const body = { userId: id, name, userEmail: email, updateEmail, degreeAssetVerified };
 	
 	axios.post(APPLICATION_ROUTES.UPDATE_ENTITY, body, { headers })
 		.then(response => {
