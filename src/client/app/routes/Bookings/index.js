@@ -74,7 +74,7 @@ class BookingsListing extends Component {
 	}
 
 	render() {
-		const { fetching, bookings: { bookingsData } } = this.props;
+		const { fetching, bookings: { bookingsData, limit, page } } = this.props;
 		return <section>
 			<ToastContainer />
 			{LoadingOverlay({ show: fetching })}
