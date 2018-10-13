@@ -21,6 +21,7 @@ import {
 } from '../../redux/actions';
 
 import './index.scss';
+import moment from 'moment';
 
 class TeachersListing extends Component {
 	
@@ -97,6 +98,7 @@ class TeachersListing extends Component {
 						<th></th>
 						<th>Name</th>
 						<th>Linked account</th>
+						<th>DOB</th>
 						<th>Email</th>
 						<th>Address</th>
 						<th>Verification</th>
@@ -131,6 +133,9 @@ class TeachersListing extends Component {
 												<FontAwesome style={{ color: '#e8453c'}} name="google"/> :
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
+									<td>
+										{ moment(teacher.dob).format('MMM DD YYYY') }
+									</td>
 									<td>
 										{
 											editingTeacher === teacher._id ?
