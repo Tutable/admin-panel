@@ -103,6 +103,7 @@ class StudentsListing extends Component {
 						<th></th>
 						<th>Name</th>
 						<th>Linked account</th>
+						<th>DOB</th>
 						<th>Email</th>
 						<th>address</th>
 						<th>Verification</th>
@@ -135,6 +136,9 @@ class StudentsListing extends Component {
 												<FontAwesome style={{ color: '#e8453c'}} name="google"/> :
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
+									<td>
+										{ moment(student.dob).format('MMM DD YYYY') }
+									</td>
 									<td>
 										{
 											editingStudent === student._id ?
