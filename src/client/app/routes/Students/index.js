@@ -137,7 +137,7 @@ class StudentsListing extends Component {
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
 									<td>
-										{ moment(student.dob).format('MMM DD YYYY') }
+										{ student.dob ? moment(student.dob).format('MMM DD YYYY') : '-' }
 									</td>
 									<td>
 										{

@@ -134,7 +134,7 @@ class TeachersListing extends Component {
 												<FontAwesome style={{ color: '#ce8b14' }} name="envelope"/>
 									}</td>
 									<td>
-										{ moment(teacher.dob).format('MMM DD YYYY') }
+										{ teacher.dob ? moment(teacher.dob).format('MMM DD YYYY') : '-' }
 									</td>
 									<td>
 										{
